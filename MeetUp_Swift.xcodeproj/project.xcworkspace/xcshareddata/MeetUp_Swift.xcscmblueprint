@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7BE53F1C78DFAEB906678D748FBF9377373F31D8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7BE53F1C78DFAEB906678D748FBF9377373F31D8" : 0,
+    "330AD53352CC09D85082F1788B584965E1193F1E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "72D661C1-34BA-4467-ABC4-ECB55E134BC9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7BE53F1C78DFAEB906678D748FBF9377373F31D8" : "MeetUpForJenkins\/",
+    "330AD53352CC09D85082F1788B584965E1193F1E" : "MeetUpForJenkins\/MeetUp_Swift\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MeetUp_Swift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MeetUp_Swift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PeterZhang2015\/MeetUp_Swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "330AD53352CC09D85082F1788B584965E1193F1E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PeterZhang2015\/MeetUpForJenkins.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7BE53F1C78DFAEB906678D748FBF9377373F31D8"
+    }
+  ]
+}
