@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E05AB011C9F6C180001E5A7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AAFE1C9F6C170001E5A7 /* FBSDKCoreKit.framework */; };
+		5E05AB021C9F6C180001E5A7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AAFF1C9F6C180001E5A7 /* FBSDKLoginKit.framework */; };
+		5E05AB031C9F6C180001E5A7 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AB001C9F6C180001E5A7 /* FBSDKShareKit.framework */; };
+		5E05AB071C9F93870001E5A7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AB061C9F93870001E5A7 /* Bolts.framework */; };
+		5E2C67911CE41EA700B9B996 /* MUConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C67901CE41EA700B9B996 /* MUConstant.swift */; };
+		5E675FA51CCB084C00386BD4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FA41CCB084C00386BD4 /* test.jpg */; };
+		5E675FA71CCB0B5300386BD4 /* meetupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FA61CCB0B5300386BD4 /* meetupIcon.png */; };
+		5E675FA91CCB295700386BD4 /* meetingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FA81CCB295700386BD4 /* meetingIcon.png */; };
+		5E675FAB1CCB2A5B00386BD4 /* pinIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FAA1CCB2A5B00386BD4 /* pinIcon.jpg */; };
+		5E928B101B968E39008DF2C3 /* MUDetailSentInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B0F1B968E39008DF2C3 /* MUDetailSentInvitationViewController.swift */; };
+		5E928B141B97112E008DF2C3 /* MUAddeMeetingTimesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B131B97112E008DF2C3 /* MUAddeMeetingTimesTableViewController.swift */; };
+		5E928B161B97124C008DF2C3 /* MUAddAMeetingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B151B97124C008DF2C3 /* MUAddAMeetingTimeViewController.swift */; };
+		5E928B181B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B171B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift */; };
+		5E928B1A1B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B191B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift */; };
+		5E928B221B986636008DF2C3 /* MUInviteAnFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B211B986636008DF2C3 /* MUInviteAnFriendViewController.swift */; };
+		5E928B241B986EC1008DF2C3 /* MUDetailInvitedFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E928B231B986EC1008DF2C3 /* MUDetailInvitedFriendViewController.swift */; };
+		5EAC34521BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAC34511BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift */; };
+		5EAC34911BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EAC348F1BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodeld */; };
+		5ECDFCB21B8C1518001E3FC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCB11B8C1518001E3FC4 /* AppDelegate.swift */; };
+		5ECDFCB91B8C1518001E3FC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ECDFCB71B8C1518001E3FC4 /* Main.storyboard */; };
+		5ECDFCBB1B8C1518001E3FC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ECDFCBA1B8C1518001E3FC4 /* Images.xcassets */; };
+		5ECDFCBE1B8C1518001E3FC4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ECDFCBC1B8C1518001E3FC4 /* LaunchScreen.xib */; };
+		5ECDFCCA1B8C1518001E3FC4 /* MeetUp_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCC91B8C1518001E3FC4 /* MeetUp_SwiftTests.swift */; };
+		5ECDFCD41B8C2D64001E3FC4 /* MULaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCD31B8C2D64001E3FC4 /* MULaunchViewController.swift */; };
+		5ECDFCD61B8C2D85001E3FC4 /* MUCreateAnAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCD51B8C2D85001E3FC4 /* MUCreateAnAccountViewController.swift */; };
+		5ECDFCD81B8C2DA3001E3FC4 /* MULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCD71B8C2DA3001E3FC4 /* MULoginViewController.swift */; };
+		5ECDFCDC1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCDB1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift */; };
+		5ECDFCDE1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCDD1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift */; };
+		5ECDFCE01B8C8736001E3FC4 /* MUSentInvitationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECDFCDF1B8C8736001E3FC4 /* MUSentInvitationsTableViewController.swift */; };
+		5ED3124A1B8FE58B001C776C /* MUAnSentInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED312491B8FE58B001C776C /* MUAnSentInvitationViewController.swift */; };
+		5ED3124C1B907B16001C776C /* MUInvitationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3124B1B907B16001C776C /* MUInvitationInformation.swift */; };
+		5ED3124D1B907B16001C776C /* MUInvitationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3124B1B907B16001C776C /* MUInvitationInformation.swift */; };
+		5EEE2BFF1C61968D00245008 /* MUGetToMeetingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE2BFE1C61968D00245008 /* MUGetToMeetingLocationViewController.swift */; };
+		5EEF240D1C085B2E001A0AD1 /* MUGlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF240C1C085B2E001A0AD1 /* MUGlobalFunction.swift */; };
+		5EEF27541C425C6B008E216D /* MUDetailMeetingLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF27531C425C6B008E216D /* MUDetailMeetingLocationViewController.swift */; };
+		5EF1E1351C30EC72004AF85F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EF1E1341C30EC72004AF85F /* Default-568h@2x.png */; };
+		5EFDE9961C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFDE9951C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift */; };
+		5EFDE99A1C25605F000928D3 /* MUDetailInviterFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFDE9991C25605F000928D3 /* MUDetailInviterFriendViewController.swift */; };
+		5EFDE99C1C2CCA9F000928D3 /* MUDetailMeetingTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFDE99B1C2CCA9F000928D3 /* MUDetailMeetingTimeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5ECDFCC41B8C1518001E3FC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5ECDFCA41B8C1518001E3FC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5ECDFCAB1B8C1518001E3FC4;
+			remoteInfo = MeetUp_Swift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5E05AAFE1C9F6C170001E5A7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		5E05AAFF1C9F6C180001E5A7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		5E05AB001C9F6C180001E5A7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		5E05AB051C9F913C0001E5A7 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		5E05AB061C9F93870001E5A7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		5E2C67901CE41EA700B9B996 /* MUConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUConstant.swift; sourceTree = "<group>"; };
+		5E675FA41CCB084C00386BD4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test.jpg; path = ../test.jpg; sourceTree = "<group>"; };
+		5E675FA61CCB0B5300386BD4 /* meetupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetupIcon.png; sourceTree = "<group>"; };
+		5E675FA81CCB295700386BD4 /* meetingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetingIcon.png; sourceTree = "<group>"; };
+		5E675FAA1CCB2A5B00386BD4 /* pinIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pinIcon.jpg; sourceTree = "<group>"; };
+		5E928B0F1B968E39008DF2C3 /* MUDetailSentInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailSentInvitationViewController.swift; sourceTree = "<group>"; };
+		5E928B131B97112E008DF2C3 /* MUAddeMeetingTimesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUAddeMeetingTimesTableViewController.swift; sourceTree = "<group>"; };
+		5E928B151B97124C008DF2C3 /* MUAddAMeetingTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUAddAMeetingTimeViewController.swift; sourceTree = "<group>"; };
+		5E928B171B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUAddMeetingLocationsTableViewController.swift; sourceTree = "<group>"; };
+		5E928B191B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUAddAMeetingLocationViewController.swift; sourceTree = "<group>"; };
+		5E928B211B986636008DF2C3 /* MUInviteAnFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUInviteAnFriendViewController.swift; sourceTree = "<group>"; };
+		5E928B231B986EC1008DF2C3 /* MUDetailInvitedFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailInvitedFriendViewController.swift; sourceTree = "<group>"; };
+		5EAC34511BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUSettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
+		5EAC34901BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReceivedInvitations.xcdatamodel; sourceTree = "<group>"; };
+		5ECDFCAC1B8C1518001E3FC4 /* MeetUp_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetUp_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ECDFCB01B8C1518001E3FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ECDFCB11B8C1518001E3FC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5ECDFCB81B8C1518001E3FC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5ECDFCBA1B8C1518001E3FC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5ECDFCBD1B8C1518001E3FC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5ECDFCC31B8C1518001E3FC4 /* MeetUp_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUp_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ECDFCC81B8C1518001E3FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ECDFCC91B8C1518001E3FC4 /* MeetUp_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUp_SwiftTests.swift; sourceTree = "<group>"; };
+		5ECDFCD31B8C2D64001E3FC4 /* MULaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MULaunchViewController.swift; sourceTree = "<group>"; };
+		5ECDFCD51B8C2D85001E3FC4 /* MUCreateAnAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUCreateAnAccountViewController.swift; sourceTree = "<group>"; };
+		5ECDFCD71B8C2DA3001E3FC4 /* MULoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MULoginViewController.swift; sourceTree = "<group>"; };
+		5ECDFCDB1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUReceivedInvitationsTableViewController.swift; sourceTree = "<group>"; };
+		5ECDFCDD1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUSettingsTableViewController.swift; sourceTree = "<group>"; };
+		5ECDFCDF1B8C8736001E3FC4 /* MUSentInvitationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUSentInvitationsTableViewController.swift; sourceTree = "<group>"; };
+		5ED312491B8FE58B001C776C /* MUAnSentInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUAnSentInvitationViewController.swift; sourceTree = "<group>"; };
+		5ED3124B1B907B16001C776C /* MUInvitationInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUInvitationInformation.swift; sourceTree = "<group>"; };
+		5EEE2BFE1C61968D00245008 /* MUGetToMeetingLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUGetToMeetingLocationViewController.swift; sourceTree = "<group>"; };
+		5EEF240C1C085B2E001A0AD1 /* MUGlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUGlobalFunction.swift; sourceTree = "<group>"; };
+		5EEF240E1C152EE5001A0AD1 /* MeetUp_Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MeetUp_Swift.entitlements; sourceTree = "<group>"; };
+		5EEF27531C425C6B008E216D /* MUDetailMeetingLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailMeetingLocationViewController.swift; sourceTree = "<group>"; };
+		5EF1E1341C30EC72004AF85F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5EFDE9951C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailReceivedInvitationViewController.swift; sourceTree = "<group>"; };
+		5EFDE9991C25605F000928D3 /* MUDetailInviterFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailInviterFriendViewController.swift; sourceTree = "<group>"; };
+		5EFDE99B1C2CCA9F000928D3 /* MUDetailMeetingTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUDetailMeetingTimeViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5ECDFCA91B8C1518001E3FC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E05AB021C9F6C180001E5A7 /* FBSDKLoginKit.framework in Frameworks */,
+				5E05AB011C9F6C180001E5A7 /* FBSDKCoreKit.framework in Frameworks */,
+				5E05AB031C9F6C180001E5A7 /* FBSDKShareKit.framework in Frameworks */,
+				5E05AB071C9F93870001E5A7 /* Bolts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5ECDFCC01B8C1518001E3FC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E05AB041C9F6C2B0001E5A7 /* FacebookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5E05AB061C9F93870001E5A7 /* Bolts.framework */,
+				5E05AAFE1C9F6C170001E5A7 /* FBSDKCoreKit.framework */,
+				5E05AAFF1C9F6C180001E5A7 /* FBSDKLoginKit.framework */,
+				5E05AB001C9F6C180001E5A7 /* FBSDKShareKit.framework */,
+			);
+			name = FacebookSDK;
+			sourceTree = "<group>";
+		};
+		5ECDFCA31B8C1518001E3FC4 = {
+			isa = PBXGroup;
+			children = (
+				5EF1E1341C30EC72004AF85F /* Default-568h@2x.png */,
+				5ECDFCAE1B8C1518001E3FC4 /* MeetUp_Swift */,
+				5ECDFCC61B8C1518001E3FC4 /* MeetUp_SwiftTests */,
+				5ECDFCAD1B8C1518001E3FC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5ECDFCAD1B8C1518001E3FC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5ECDFCAC1B8C1518001E3FC4 /* MeetUp_Swift.app */,
+				5ECDFCC31B8C1518001E3FC4 /* MeetUp_SwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5ECDFCAE1B8C1518001E3FC4 /* MeetUp_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				5E05AB041C9F6C2B0001E5A7 /* FacebookSDK */,
+				5EEF240E1C152EE5001A0AD1 /* MeetUp_Swift.entitlements */,
+				5E05AB051C9F913C0001E5A7 /* Bridging-Header.h */,
+				5ECDFCB71B8C1518001E3FC4 /* Main.storyboard */,
+				5ECDFCB11B8C1518001E3FC4 /* AppDelegate.swift */,
+				5ECDFCD31B8C2D64001E3FC4 /* MULaunchViewController.swift */,
+				5ECDFCD51B8C2D85001E3FC4 /* MUCreateAnAccountViewController.swift */,
+				5ECDFCD71B8C2DA3001E3FC4 /* MULoginViewController.swift */,
+				5ECDFCDF1B8C8736001E3FC4 /* MUSentInvitationsTableViewController.swift */,
+				5ED312491B8FE58B001C776C /* MUAnSentInvitationViewController.swift */,
+				5E928B0F1B968E39008DF2C3 /* MUDetailSentInvitationViewController.swift */,
+				5EFDE99B1C2CCA9F000928D3 /* MUDetailMeetingTimeViewController.swift */,
+				5EEF27531C425C6B008E216D /* MUDetailMeetingLocationViewController.swift */,
+				5EEE2BFE1C61968D00245008 /* MUGetToMeetingLocationViewController.swift */,
+				5E928B231B986EC1008DF2C3 /* MUDetailInvitedFriendViewController.swift */,
+				5EFDE9991C25605F000928D3 /* MUDetailInviterFriendViewController.swift */,
+				5E928B131B97112E008DF2C3 /* MUAddeMeetingTimesTableViewController.swift */,
+				5E928B151B97124C008DF2C3 /* MUAddAMeetingTimeViewController.swift */,
+				5E928B171B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift */,
+				5E928B191B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift */,
+				5E928B211B986636008DF2C3 /* MUInviteAnFriendViewController.swift */,
+				5ECDFCDB1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift */,
+				5EFDE9951C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift */,
+				5ECDFCDD1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift */,
+				5EAC34511BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift */,
+				5ED3124B1B907B16001C776C /* MUInvitationInformation.swift */,
+				5E2C67901CE41EA700B9B996 /* MUConstant.swift */,
+				5EEF240C1C085B2E001A0AD1 /* MUGlobalFunction.swift */,
+				5EAC348F1BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodeld */,
+				5E675FA81CCB295700386BD4 /* meetingIcon.png */,
+				5E675FA61CCB0B5300386BD4 /* meetupIcon.png */,
+				5E675FAA1CCB2A5B00386BD4 /* pinIcon.jpg */,
+				5E675FA41CCB084C00386BD4 /* test.jpg */,
+				5ECDFCBA1B8C1518001E3FC4 /* Images.xcassets */,
+				5ECDFCBC1B8C1518001E3FC4 /* LaunchScreen.xib */,
+				5ECDFCAF1B8C1518001E3FC4 /* Supporting Files */,
+			);
+			path = MeetUp_Swift;
+			sourceTree = "<group>";
+		};
+		5ECDFCAF1B8C1518001E3FC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5ECDFCB01B8C1518001E3FC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5ECDFCC61B8C1518001E3FC4 /* MeetUp_SwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				5ECDFCC91B8C1518001E3FC4 /* MeetUp_SwiftTests.swift */,
+				5ECDFCC71B8C1518001E3FC4 /* Supporting Files */,
+			);
+			path = MeetUp_SwiftTests;
+			sourceTree = "<group>";
+		};
+		5ECDFCC71B8C1518001E3FC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5ECDFCC81B8C1518001E3FC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5ECDFCAB1B8C1518001E3FC4 /* MeetUp_Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ECDFCCD1B8C1518001E3FC4 /* Build configuration list for PBXNativeTarget "MeetUp_Swift" */;
+			buildPhases = (
+				5ECDFCA81B8C1518001E3FC4 /* Sources */,
+				5ECDFCA91B8C1518001E3FC4 /* Frameworks */,
+				5ECDFCAA1B8C1518001E3FC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetUp_Swift;
+			productName = MeetUp_Swift;
+			productReference = 5ECDFCAC1B8C1518001E3FC4 /* MeetUp_Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5ECDFCC21B8C1518001E3FC4 /* MeetUp_SwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ECDFCD01B8C1518001E3FC4 /* Build configuration list for PBXNativeTarget "MeetUp_SwiftTests" */;
+			buildPhases = (
+				5ECDFCBF1B8C1518001E3FC4 /* Sources */,
+				5ECDFCC01B8C1518001E3FC4 /* Frameworks */,
+				5ECDFCC11B8C1518001E3FC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5ECDFCC51B8C1518001E3FC4 /* PBXTargetDependency */,
+			);
+			name = MeetUp_SwiftTests;
+			productName = MeetUp_SwiftTests;
+			productReference = 5ECDFCC31B8C1518001E3FC4 /* MeetUp_SwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5ECDFCA41B8C1518001E3FC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Chongzheng Zhang";
+				TargetAttributes = {
+					5ECDFCAB1B8C1518001E3FC4 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5HNZY4FFEY;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+					5ECDFCC21B8C1518001E3FC4 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 5ECDFCAB1B8C1518001E3FC4;
+					};
+				};
+			};
+			buildConfigurationList = 5ECDFCA71B8C1518001E3FC4 /* Build configuration list for PBXProject "MeetUp_Swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5ECDFCA31B8C1518001E3FC4;
+			productRefGroup = 5ECDFCAD1B8C1518001E3FC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5ECDFCAB1B8C1518001E3FC4 /* MeetUp_Swift */,
+				5ECDFCC21B8C1518001E3FC4 /* MeetUp_SwiftTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5ECDFCAA1B8C1518001E3FC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E675FA91CCB295700386BD4 /* meetingIcon.png in Resources */,
+				5E675FA71CCB0B5300386BD4 /* meetupIcon.png in Resources */,
+				5E675FAB1CCB2A5B00386BD4 /* pinIcon.jpg in Resources */,
+				5ECDFCB91B8C1518001E3FC4 /* Main.storyboard in Resources */,
+				5E675FA51CCB084C00386BD4 /* test.jpg in Resources */,
+				5EF1E1351C30EC72004AF85F /* Default-568h@2x.png in Resources */,
+				5ECDFCBE1B8C1518001E3FC4 /* LaunchScreen.xib in Resources */,
+				5ECDFCBB1B8C1518001E3FC4 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5ECDFCC11B8C1518001E3FC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5ECDFCA81B8C1518001E3FC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E928B181B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift in Sources */,
+				5E928B1A1B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift in Sources */,
+				5E2C67911CE41EA700B9B996 /* MUConstant.swift in Sources */,
+				5ECDFCDE1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift in Sources */,
+				5E928B241B986EC1008DF2C3 /* MUDetailInvitedFriendViewController.swift in Sources */,
+				5ED3124C1B907B16001C776C /* MUInvitationInformation.swift in Sources */,
+				5EEF27541C425C6B008E216D /* MUDetailMeetingLocationViewController.swift in Sources */,
+				5ECDFCDC1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift in Sources */,
+				5EFDE99C1C2CCA9F000928D3 /* MUDetailMeetingTimeViewController.swift in Sources */,
+				5EAC34911BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodeld in Sources */,
+				5ECDFCB21B8C1518001E3FC4 /* AppDelegate.swift in Sources */,
+				5EEF240D1C085B2E001A0AD1 /* MUGlobalFunction.swift in Sources */,
+				5EEE2BFF1C61968D00245008 /* MUGetToMeetingLocationViewController.swift in Sources */,
+				5E928B221B986636008DF2C3 /* MUInviteAnFriendViewController.swift in Sources */,
+				5EFDE9961C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift in Sources */,
+				5EFDE99A1C25605F000928D3 /* MUDetailInviterFriendViewController.swift in Sources */,
+				5ECDFCD81B8C2DA3001E3FC4 /* MULoginViewController.swift in Sources */,
+				5EAC34521BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift in Sources */,
+				5ED3124A1B8FE58B001C776C /* MUAnSentInvitationViewController.swift in Sources */,
+				5E928B101B968E39008DF2C3 /* MUDetailSentInvitationViewController.swift in Sources */,
+				5ECDFCE01B8C8736001E3FC4 /* MUSentInvitationsTableViewController.swift in Sources */,
+				5ECDFCD61B8C2D85001E3FC4 /* MUCreateAnAccountViewController.swift in Sources */,
+				5ECDFCD41B8C2D64001E3FC4 /* MULaunchViewController.swift in Sources */,
+				5E928B141B97112E008DF2C3 /* MUAddeMeetingTimesTableViewController.swift in Sources */,
+				5E928B161B97124C008DF2C3 /* MUAddAMeetingTimeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5ECDFCBF1B8C1518001E3FC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5ECDFCCA1B8C1518001E3FC4 /* MeetUp_SwiftTests.swift in Sources */,
+				5ED3124D1B907B16001C776C /* MUInvitationInformation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5ECDFCC51B8C1518001E3FC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5ECDFCAB1B8C1518001E3FC4 /* MeetUp_Swift */;
+			targetProxy = 5ECDFCC41B8C1518001E3FC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5ECDFCB71B8C1518001E3FC4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5ECDFCB81B8C1518001E3FC4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5ECDFCBC1B8C1518001E3FC4 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5ECDFCBD1B8C1518001E3FC4 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5ECDFCCB1B8C1518001E3FC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "718c5e9c-2223-48fc-89ab-a0fa98b0d3ee";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5ECDFCCC1B8C1518001E3FC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "718c5e9c-2223-48fc-89ab-a0fa98b0d3ee";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5ECDFCCE1B8C1518001E3FC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
+					"$(PROJECT_DIR)/MeetUp_Swift",
+				);
+				INFOPLIST_FILE = MeetUp_Swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.custombusinessapps.MeetUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetUp_Swift/Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		5ECDFCCF1B8C1518001E3FC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
+					"$(PROJECT_DIR)/MeetUp_Swift",
+				);
+				INFOPLIST_FILE = MeetUp_Swift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.custombusinessapps.MeetUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetUp_Swift/Bridging-Header.h";
+			};
+			name = Release;
+		};
+		5ECDFCD11B8C1518001E3FC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MeetUp_SwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "CBA.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetUp_Swift.app/MeetUp_Swift";
+			};
+			name = Debug;
+		};
+		5ECDFCD21B8C1518001E3FC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
+				);
+				INFOPLIST_FILE = MeetUp_SwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "CBA.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetUp_Swift.app/MeetUp_Swift";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5ECDFCA71B8C1518001E3FC4 /* Build configuration list for PBXProject "MeetUp_Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ECDFCCB1B8C1518001E3FC4 /* Debug */,
+				5ECDFCCC1B8C1518001E3FC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5ECDFCCD1B8C1518001E3FC4 /* Build configuration list for PBXNativeTarget "MeetUp_Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ECDFCCE1B8C1518001E3FC4 /* Debug */,
+				5ECDFCCF1B8C1518001E3FC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5ECDFCD01B8C1518001E3FC4 /* Build configuration list for PBXNativeTarget "MeetUp_SwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ECDFCD11B8C1518001E3FC4 /* Debug */,
+				5ECDFCD21B8C1518001E3FC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EAC348F1BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EAC34901BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodel */,
+			);
+			currentVersion = 5EAC34901BF56CAC00D83AA5 /* ReceivedInvitations.xcdatamodel */;
+			path = ReceivedInvitations.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5ECDFCA41B8C1518001E3FC4 /* Project object */;
+}

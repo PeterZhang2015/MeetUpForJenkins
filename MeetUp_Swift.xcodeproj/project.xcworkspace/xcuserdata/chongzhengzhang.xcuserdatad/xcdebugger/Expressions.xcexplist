@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MULoginViewController.Login(AnyObject) -&gt; ():MULoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "appDelegate.bIsLogin">
+            </PersistentString>
+            <PersistentString
+               value = "appDelegate.accountInfo?.Test">
+            </PersistentString>
+            <PersistentString
+               value = "LoginEmail.text!">
+            </PersistentString>
+            <PersistentString
+               value = "appDelegate.accountInfo?.Email">
+            </PersistentString>
+            <PersistentString
+               value = "appDelegate.accountInfo.Email">
+            </PersistentString>
+            <PersistentString
+               value = "appDelegate.accountInfo!.Email">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
