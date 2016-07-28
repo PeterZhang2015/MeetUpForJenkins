@@ -449,7 +449,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ebce5c43-ba01-4eb4-b8aa-2e37ff7110eb";
+				PROVISIONING_PROFILE = "7839d819-850e-46bc-8032-76e869bcae11";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -488,7 +488,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ebce5c43-ba01-4eb4-b8aa-2e37ff7110eb";
+				PROVISIONING_PROFILE = "7839d819-850e-46bc-8032-76e869bcae11";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -509,7 +509,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.custombusinessapps.MeetUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ebce5c43-ba01-4eb4-b8aa-2e37ff7110eb";
+				PROVISIONING_PROFILE = "7839d819-850e-46bc-8032-76e869bcae11";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetUp_Swift/Bridging-Header.h";
 			};
 			name = Debug;
@@ -529,7 +529,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.custombusinessapps.MeetUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ebce5c43-ba01-4eb4-b8aa-2e37ff7110eb";
+				PROVISIONING_PROFILE = "7839d819-850e-46bc-8032-76e869bcae11";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetUp_Swift/Bridging-Header.h";
 			};
 			name = Release;
