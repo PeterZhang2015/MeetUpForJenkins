@@ -1389,12 +1389,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "491528024.140128"
+                  timestampString = "491558269.158715"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "379"
                   endingLineNumber = "379"
-                  offsetFromSymbolStart = "149">
+                  offsetFromSymbolStart = "112">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1404,12 +1404,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "491528024.140239"
+                  timestampString = "491558269.158832"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "381"
                   endingLineNumber = "381"
-                  offsetFromSymbolStart = "54">
+                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>
