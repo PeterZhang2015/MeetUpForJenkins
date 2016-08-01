@@ -499,7 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangchongzheng@gmail.com (62TG8SV528)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 崇正 张 (2AM6M57835)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhangchongzheng@gmail.com (62TG8SV528)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,7 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhangchongzheng@gmail.com (62TG8SV528)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 崇正 张 (2AM6M57835)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhangchongzheng@gmail.com (62TG8SV528)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
