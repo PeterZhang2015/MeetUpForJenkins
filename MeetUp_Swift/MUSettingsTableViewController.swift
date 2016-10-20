@@ -14,7 +14,7 @@ import FBSDKLoginKit
 class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDelegate {
     
     
-    @IBAction func cancelForSettingsChangePasswordVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForSettingsChangePasswordVC(_ segue:UIStoryboardSegue) {
         
     }
     
@@ -29,7 +29,7 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(animated);
         
         tableView.reloadData()
@@ -43,28 +43,28 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 1
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
 
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             
             /* Get the EmailCell according to it's identifier. */
-            let Emailcell = tableView.dequeueReusableCellWithIdentifier("SettingsEmailCell", forIndexPath: indexPath)
+            let Emailcell = tableView.dequeueReusableCell(withIdentifier: "SettingsEmailCell", for: indexPath)
           
             /*Get AppDelegate. */
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             Emailcell.setNeedsLayout()
             
@@ -79,13 +79,13 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         
 
             
-        if indexPath.section == 1 {
+        if (indexPath as NSIndexPath).section == 1 {
             
             /* Get the ChangePasswordCell according to it's identifier. */
-            let ChangePasswordcell = tableView.dequeueReusableCellWithIdentifier("SettingsChangePasswordCell", forIndexPath: indexPath)
+            let ChangePasswordcell = tableView.dequeueReusableCell(withIdentifier: "SettingsChangePasswordCell", for: indexPath)
 
             ChangePasswordcell.setNeedsLayout()
-            ChangePasswordcell.textLabel?.hidden = false
+            ChangePasswordcell.textLabel?.isHidden = false
             
             ChangePasswordcell.textLabel!.numberOfLines = 0;
                 
@@ -108,16 +108,16 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         else
         {
                 /* Get the LogOutCell according to it's identifier. */
-                let LogOutcell = tableView.dequeueReusableCellWithIdentifier("SettingsLogOutCell", forIndexPath: indexPath)
+                let LogOutcell = tableView.dequeueReusableCell(withIdentifier: "SettingsLogOutCell", for: indexPath)
         
-                if indexPath.section == 2 {
+                if (indexPath as NSIndexPath).section == 2 {
         
                     LogOutcell.setNeedsLayout()
                     LogOutcell.textLabel!.text = "LogOut"
                     LogOutcell.textLabel!.numberOfLines = 0;
                     
-                    LogOutcell.textLabel!.textColor = UIColor.redColor()
-                    LogOutcell.textLabel?.textAlignment = .Center
+                    LogOutcell.textLabel!.textColor = UIColor.red
+                    LogOutcell.textLabel?.textAlignment = .center
                     
                     
                   //  LogOutcell.layoutIfNeeded()
@@ -145,7 +145,7 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         
         switch section{
@@ -173,7 +173,7 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         
         let navigationVC: UINavigationController = self.tabBarController?.viewControllers![0] as! UINavigationController
         /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-        navigationVC.navigationBar.translucent = false
+        navigationVC.navigationBar.isTranslucent = false
         /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
         
         let sentInvitationsVC: MUSentInvitationsTableViewController = navigationVC.viewControllers[0] as! MUSentInvitationsTableViewController
@@ -182,7 +182,7 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
         
         let ReceivedInvitationnavigationVC: UINavigationController = self.tabBarController?.viewControllers![1] as! UINavigationController
         /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-        ReceivedInvitationnavigationVC.navigationBar.translucent = false
+        ReceivedInvitationnavigationVC.navigationBar.isTranslucent = false
         /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
         
         let receivedInvitationsVC: MUReceivedInvitationsTableViewController = ReceivedInvitationnavigationVC.viewControllers[0] as! MUReceivedInvitationsTableViewController
@@ -197,16 +197,16 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
     
         initializeTabBar()
 
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
    
             let loginManager = FBSDKLoginManager()
             loginManager.logOut() // this is an instance function
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)  // Get the storyboard according to it's name.
-            let LaunchViewController = storyboard.instantiateViewControllerWithIdentifier("LaunchVC") as! MULaunchViewController   // Get the MULaunchViewController according to it's storyboard identifier.
+            let LaunchViewController = storyboard.instantiateViewController(withIdentifier: "LaunchVC") as! MULaunchViewController   // Get the MULaunchViewController according to it's storyboard identifier.
             
             /*Get AppDelegate. */
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             //  appDelegate.window?.makeKeyAndVisible()
             appDelegate.window?.rootViewController = LaunchViewController
             
@@ -220,14 +220,14 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (indexPath.section == 2)
+        if ((indexPath as NSIndexPath).section == 2)
         {
             
             //  let refreshAlert = UIAlertController(title: "Refresh", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.Alert)
   
-            let LogOutAlert = UIAlertController(title: "Log Out", message: "Log out will not delete any data. You can still log in with this account.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            let LogOutAlert = UIAlertController(title: "Log Out", message: "Log out will not delete any data. You can still log in with this account.", preferredStyle: UIAlertControllerStyle.actionSheet)
          
             addActionForUIAlertController(LogOutAlert, actionTitle: "Log Out", actionProcess: processLogOutActionInAlertController)
                 
@@ -235,7 +235,7 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
             addActionForUIAlertController(LogOutAlert, actionTitle: "Cancel", actionProcess: processCancelActionInAlertController)
             
             
-            presentViewController(LogOutAlert, animated: true, completion: nil)
+            present(LogOutAlert, animated: true, completion: nil)
   
             
         }  // end of if (indexPath.section == 2)
@@ -245,12 +245,27 @@ class MUSettingsTableViewController: UITableViewController ,FBSDKLoginButtonDele
     }
 
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
-    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+       
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+        }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+       
         
     }
     

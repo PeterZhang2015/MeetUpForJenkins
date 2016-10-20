@@ -20,15 +20,15 @@ class MUDetailInvitedFriendViewController: UIViewController {
         super.viewDidLoad()
         
 
-        invitedEmailAddress.userInteractionEnabled = true
-        invitedEmailAddress.editable = false
+        invitedEmailAddress.isUserInteractionEnabled = true
+        invitedEmailAddress.isEditable = false
         
         invitedEmailAddress.text = InvitedFriendEmail!
 
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         
         //InvitedFriendEmailLabel.text = InvitedFriendEmail

@@ -38,7 +38,7 @@ class MUDetailMeetingTimeViewController: UIViewController, UIPickerViewDelegate 
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
 
     }
@@ -48,11 +48,11 @@ class MUDetailMeetingTimeViewController: UIViewController, UIPickerViewDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if ((self.HaveSelected != nil) && (self.HaveSelected == 1))
         {
@@ -68,7 +68,7 @@ class MUDetailMeetingTimeViewController: UIViewController, UIPickerViewDelegate 
     }
     
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if ((self.HaveSelected != nil) && (self.HaveSelected == 1))
         {

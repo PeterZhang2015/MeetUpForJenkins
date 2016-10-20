@@ -17,24 +17,24 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var SignUpConfirmPassword: UITextField!
 
     
-    @IBAction func CreateAnAccount(sender: AnyObject) {
+    @IBAction func CreateAnAccount(_ sender: AnyObject) {
   
         let signUpInputInfoValid = checkValidationForSignUpInputInfo(SignUpUserName, email: SignUpEmail, password: SignUpPassword, confirmedPassword: SignUpConfirmPassword)
         
         if (signUpInputInfoValid)
         {
             /* Get stored device token. */
-            let defaults = NSUserDefaults.standardUserDefaults()   //Set defaults to save and get data.
+            let defaults = UserDefaults.standard   //Set defaults to save and get data.
 
-            let deviceToken = defaults.objectForKey(GlobalConstants.kdeviceToken) as! String?
+            let deviceToken = defaults.object(forKey: GlobalConstants.kdeviceToken) as! String?
             
             //    let deviceToken = "1234"  //Just for debug.
             
             /* send sign up data to web server. */
-            let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/createaccount.php")!
+            let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/createaccount.php")!
             
             // Compose a query string
-            let postString: NSString = "sDeviceToken=\(deviceToken!)&sUsername=\(SignUpUserName.text!)&sEmail=\(SignUpEmail.text!)&sPassword=\(SignUpPassword.text!)"
+            let postString: NSString = "sDeviceToken=\(deviceToken!)&sUsername=\(SignUpUserName.text!)&sEmail=\(SignUpEmail.text!)&sPassword=\(SignUpPassword.text!)" as NSString
             
             let request = createHttpPostRequest(url, postString: postString)
 
@@ -61,13 +61,13 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
     /*  Succeed to create an account for meetup applicaiton. */
-    func succeedToSignUp(jsonData: NSDictionary) -> Void {
+    func succeedToSignUp(_ jsonData: NSDictionary) -> Void {
        
         NSLog("Sign Up Succeed");
         
@@ -77,7 +77,7 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
     }
     
     /*  Failed to create an account for meetup applicaiton. */
-    func failedToSignUp(errorMsg: NSString) -> Void {
+    func failedToSignUp(_ errorMsg: NSString) -> Void {
 
         NSLog("Fail to sign up");
         
@@ -88,9 +88,9 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
     }
     
     /* Process the http response from remote server after sending http request which asked for creating an account. */
-    func receivedSignUpResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedSignUpResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         
@@ -99,7 +99,7 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
     }
     
     /*Check the validation for the signup input information. */
-    func checkValidationForSignUpInputInfo(username: UITextField, email: UITextField, password: UITextField, confirmedPassword: UITextField) -> Bool {
+    func checkValidationForSignUpInputInfo(_ username: UITextField, email: UITextField, password: UITextField, confirmedPassword: UITextField) -> Bool {
         
         if (username.text!.isEmpty) { //Check whether the username is empty
             

@@ -30,36 +30,36 @@ class MUDetailSentInvitationViewController: UIViewController {
     
     
     
-    @IBAction func cancelForDetailMeetingTimeVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailMeetingTimeVC(_ segue:UIStoryboardSegue) {
         
         
     }
     
-    @IBAction func cancelForDetailMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailMeetingLocationVC(_ segue:UIStoryboardSegue) {
         
         
     }
     
-    @IBAction func cancelForDetailInvitedFriendVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailInvitedFriendVC(_ segue:UIStoryboardSegue) {
         
         
     }
     
-    @IBAction func cancelForDetailInviterFriendVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailInviterFriendVC(_ segue:UIStoryboardSegue) {
         
     }
     
-    @IBAction func CancelForDetailMeetingTimeVC(segue:UIStoryboardSegue) {
+    @IBAction func CancelForDetailMeetingTimeVC(_ segue:UIStoryboardSegue) {
         
     }
 
  
-    @IBAction func CancelForDetailMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func CancelForDetailMeetingLocationVC(_ segue:UIStoryboardSegue) {
         
     }
     
     /*  Succeed to send the selected meeting time information to supported web server. */
-    func succeedToSendSelectedMeetingTimeInfo(jsonData: NSDictionary) -> Void {
+    func succeedToSendSelectedMeetingTimeInfo(_ jsonData: NSDictionary) -> Void {
         
         self.AnInvitation?.selectedMeetingTime = self.selectedMeetingTime!
         
@@ -67,7 +67,7 @@ class MUDetailSentInvitationViewController: UIViewController {
     
     
     /*  Failed to send the selected meeting time information to supported web server. */
-    func failedToSendSelectedMeetingTimeInfo(errorMsg: NSString) -> Void {
+    func failedToSendSelectedMeetingTimeInfo(_ errorMsg: NSString) -> Void {
         
         NSLog("Select meeting time Failed!");
         
@@ -78,9 +78,9 @@ class MUDetailSentInvitationViewController: UIViewController {
     }
 
     /* Process the http response from remote server after sending http request which sending the selected meeting time information to supported web server. */
-    func receivedSendingSelectedMeetingTimeResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedSendingSelectedMeetingTimeResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         processHttpResponseAccordingToStatusCode(statusCode, data: data, processSuccessfulHttpResponse: self.succeedToSendSelectedMeetingTimeInfo, processFailureHttpResponse: self.failedToSendSelectedMeetingTimeInfo)
@@ -88,9 +88,9 @@ class MUDetailSentInvitationViewController: UIViewController {
     }
     
     
-    @IBAction func selectForDetailMeetingTimeVC(segue:UIStoryboardSegue) {
+    @IBAction func selectForDetailMeetingTimeVC(_ segue:UIStoryboardSegue) {
         
-        let sourceVC:MUDetailMeetingTimeViewController = segue.sourceViewController as! MUDetailMeetingTimeViewController
+        let sourceVC:MUDetailMeetingTimeViewController = segue.source as! MUDetailMeetingTimeViewController
   
         let meetingTimeNum = sourceVC.meetingTimeArray.count
         if (meetingTimeNum == 0)
@@ -103,15 +103,15 @@ class MUDetailSentInvitationViewController: UIViewController {
         {
             let delegate:UIPickerViewDelegate = sourceVC.meetingTimePicker.delegate!
             
-            self.selectedMeetingTime = delegate.pickerView!(sourceVC.meetingTimePicker, titleForRow: sourceVC.meetingTimePicker.selectedRowInComponent(0), forComponent: 0)!
+            self.selectedMeetingTime = delegate.pickerView!(sourceVC.meetingTimePicker, titleForRow: sourceVC.meetingTimePicker.selectedRow(inComponent: 0), forComponent: 0)!
             
             self.HaveSelectedMeetingTime = 1 //    0-not selected, 1-selected
             
             
             /*Sending the added invitation to the supported web server. */
-            let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/selectedmeetingtime.php")!
+            let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/selectedmeetingtime.php")!
             
-            let postString: NSString = "sSelectedMeetingTime=\(selectedMeetingTime)&iInvitationID=\(AnInvitation!.InvitationId)"
+            let postString: NSString = "sSelectedMeetingTime=\(selectedMeetingTime)&iInvitationID=\(AnInvitation!.InvitationId)" as NSString
             
             let request = createHttpPostRequest(url, postString: postString)
             
@@ -130,7 +130,7 @@ class MUDetailSentInvitationViewController: UIViewController {
     
 
     /*  Succeed to send the selected meeting location information to supported web server. */
-    func succeedToSendSelectedMeetingLocationInfo(jsonData: NSDictionary) -> Void {
+    func succeedToSendSelectedMeetingLocationInfo(_ jsonData: NSDictionary) -> Void {
         
         self.AnInvitation?.selectedMeetingLocation = self.selectedMeetingLocation
         
@@ -138,7 +138,7 @@ class MUDetailSentInvitationViewController: UIViewController {
     
     
     /*  Failed to send the selected meeting location information to supported web server. */
-    func failedToSendSelectedMeetingLocationInfo(errorMsg: NSString) -> Void {
+    func failedToSendSelectedMeetingLocationInfo(_ errorMsg: NSString) -> Void {
         
         NSLog("Select meeting location Failed!");
         
@@ -149,18 +149,18 @@ class MUDetailSentInvitationViewController: UIViewController {
     }
     
     /* Process the http response from remote server after sending http request which sending the selected meeting location information to supported web server. */
-    func receivedSendingSelectedMeetingLocaitonResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedSendingSelectedMeetingLocaitonResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode)
         
         processHttpResponseAccordingToStatusCode(statusCode, data: data, processSuccessfulHttpResponse: self.succeedToSendSelectedMeetingLocationInfo, processFailureHttpResponse: self.failedToSendSelectedMeetingLocationInfo)
         
     }
     
-    @IBAction func SelectForDetailMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func SelectForDetailMeetingLocationVC(_ segue:UIStoryboardSegue) {
     
-        let sourceVC:MUDetailMeetingLocationViewController = segue.sourceViewController as! MUDetailMeetingLocationViewController
+        let sourceVC:MUDetailMeetingLocationViewController = segue.source as! MUDetailMeetingLocationViewController
             
         let meetingLocationNum = sourceVC.meetingLocationArray.count
         if (meetingLocationNum == 0)
@@ -174,23 +174,23 @@ class MUDetailSentInvitationViewController: UIViewController {
     
             let delegate:UIPickerViewDelegate = sourceVC.meetingLocationPicker.delegate!
          
-            self.selectedMeetingLocation = delegate.pickerView!(sourceVC.meetingLocationPicker, titleForRow: sourceVC.meetingLocationPicker.selectedRowInComponent(0), forComponent: 0)!
+            self.selectedMeetingLocation = delegate.pickerView!(sourceVC.meetingLocationPicker, titleForRow: sourceVC.meetingLocationPicker.selectedRow(inComponent: 0), forComponent: 0)!
 
             self.HaveSelectedMeetingLocation = 1 //    0-not selected, 1-selected
             
 
             /*Set information after setting the meeting location. */
             sourceVC.selectedMeetingLocation = selectedMeetingLocation
-            sourceVC.GetToMeetLocationButton.hidden = false
+            sourceVC.GetToMeetLocationButton.isHidden = false
             sourceVC.HaveSelected = 1  //    0-not selected, 1-selected
             
             AnInvitation?.selectedMeetingLocation = selectedMeetingLocation
             
             /* send data to web server. */
-            let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/selectedmeetinglocation.php")!
+            let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/selectedmeetinglocation.php")!
 
             // Compose a query string
-            let postString: NSString = "sSelectedMeetingLocation=\(selectedMeetingLocation)&iInvitationID=\(AnInvitation!.InvitationId)"
+            let postString: NSString = "sSelectedMeetingLocation=\(selectedMeetingLocation)&iInvitationID=\(AnInvitation!.InvitationId)" as NSString
 
             let request = createHttpPostRequest(url, postString: postString)
             
@@ -207,7 +207,7 @@ class MUDetailSentInvitationViewController: UIViewController {
     }
 
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SegueToDetailMeetingTimeVC"{
             
@@ -218,7 +218,7 @@ class MUDetailSentInvitationViewController: UIViewController {
 //            = destinationNavigationController.topViewController as! MUDetailMeetingTimeViewController
             
             let detailMeetingTimeVC: MUDetailMeetingTimeViewController
-                        = segue.destinationViewController as! MUDetailMeetingTimeViewController
+                        = segue.destination as! MUDetailMeetingTimeViewController
             
             detailMeetingTimeVC.meetingTimeArray = AnInvitation!.MeetingTime
 
@@ -235,7 +235,7 @@ class MUDetailSentInvitationViewController: UIViewController {
 //            
 //            let detailMeetingLocationVC: MUDetailMeetingLocationViewController = destinationNavigationController.topViewController as! MUDetailMeetingLocationViewController
             
-            let detailMeetingLocationVC: MUDetailMeetingLocationViewController = segue.destinationViewController as! MUDetailMeetingLocationViewController
+            let detailMeetingLocationVC: MUDetailMeetingLocationViewController = segue.destination as! MUDetailMeetingLocationViewController
             
             detailMeetingLocationVC.meetingLocationArray = AnInvitation!.MeetingLocation
             
@@ -254,7 +254,7 @@ class MUDetailSentInvitationViewController: UIViewController {
 //            let detailInvitedFriendVC: MUDetailInvitedFriendViewController = destinationNavigationController.topViewController as! MUDetailInvitedFriendViewController
             
             
-            let detailInvitedFriendVC: MUDetailInvitedFriendViewController = segue.destinationViewController as! MUDetailInvitedFriendViewController
+            let detailInvitedFriendVC: MUDetailInvitedFriendViewController = segue.destination as! MUDetailInvitedFriendViewController
             
             
             detailInvitedFriendVC.InvitedFriendEmail = AnInvitation?.InvitedFriendEmail
@@ -267,7 +267,7 @@ class MUDetailSentInvitationViewController: UIViewController {
 //            
 //            let detailInviterFriendVC: MUDetailInviterFriendViewController = destinationNavigationController.topViewController as! MUDetailInviterFriendViewController
             
-            let detailInviterFriendVC: MUDetailInviterFriendViewController = segue.destinationViewController as!MUDetailInviterFriendViewController
+            let detailInviterFriendVC: MUDetailInviterFriendViewController = segue.destination as!MUDetailInviterFriendViewController
             
             detailInviterFriendVC.InviterFriendEmail = AnInvitation?.InviterFriendEmail
             
@@ -299,18 +299,18 @@ class MUDetailSentInvitationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
     
         /*Display meeting name. */
-        DisplayMeetingNameText.userInteractionEnabled = true
-        DisplayMeetingNameText.editable = false
+        DisplayMeetingNameText.isUserInteractionEnabled = true
+        DisplayMeetingNameText.isEditable = false
         
         DisplayMeetingNameText.text = AnInvitation?.MeetingName
         
         /*Display meeting description. */
-        DisplayMeetingDescriptionText.userInteractionEnabled = true
-        DisplayMeetingDescriptionText.editable = false
+        DisplayMeetingDescriptionText.isUserInteractionEnabled = true
+        DisplayMeetingDescriptionText.isEditable = false
         
         DisplayMeetingDescriptionText.text = AnInvitation?.MeetingDescription
 

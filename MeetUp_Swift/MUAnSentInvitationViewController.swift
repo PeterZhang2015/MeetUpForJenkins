@@ -21,9 +21,9 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     
     @IBOutlet weak var meetingDescription: UITextView!
     
-    @IBAction func doneForAddMeetingTimesVC(segue:UIStoryboardSegue) {
+    @IBAction func doneForAddMeetingTimesVC(_ segue:UIStoryboardSegue) {
         
-        if let AddMeetingTimesVC = segue.sourceViewController as? MUAddeMeetingTimesTableViewController {
+        if let AddMeetingTimesVC = segue.source as? MUAddeMeetingTimesTableViewController {
             
             //add the new invitation to the invitation array
             self.meetingTimeArray = AddMeetingTimesVC.meetingTimeArray
@@ -43,9 +43,9 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
         
     }
     
-    @IBAction func doneForAddMeetingLocationsVC(segue:UIStoryboardSegue) {
+    @IBAction func doneForAddMeetingLocationsVC(_ segue:UIStoryboardSegue) {
         
-        if let AddMeetingLocationsVC = segue.sourceViewController as? MUAddMeetingLocationsTableViewController {
+        if let AddMeetingLocationsVC = segue.source as? MUAddMeetingLocationsTableViewController {
             
             //add the new invitation to the invitation array
             self.meetingLocationArray = AddMeetingLocationsVC.meetingLocationArray
@@ -63,9 +63,9 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
         
     }
     
-    @IBAction func saveForInviteAFriendVC(segue:UIStoryboardSegue) {
+    @IBAction func saveForInviteAFriendVC(_ segue:UIStoryboardSegue) {
         
-        if let InviteAFriendVC = segue.sourceViewController as? MUInviteAnFriendViewController {
+        if let InviteAFriendVC = segue.source as? MUInviteAnFriendViewController {
             
             //add the new invitation to the invitation array
             self.invitedFriendEmail = InviteAFriendVC.InvitedFriendEmail.text
@@ -82,14 +82,14 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
         }
         
     }
-    @IBAction func cancelForInviteAFriendVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForInviteAFriendVC(_ segue:UIStoryboardSegue) {
         
 
     }
     
     
     /*Check the validation for adding an invitation. */
-    func checkValidationForAddingAnInvitation(meetingName: UITextField, meetingDescription: UITextView, meetingTimeArray: [String],meetingLocationArray: [String], invitedFriendEmail: String) -> Bool {
+    func checkValidationForAddingAnInvitation(_ meetingName: UITextField, meetingDescription: UITextView, meetingTimeArray: [String],meetingLocationArray: [String], invitedFriendEmail: String) -> Bool {
         
         if (meetingName.text!.isEmpty) {
             
@@ -150,22 +150,22 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     func createAnInvitationPostString() -> NSString {
         
         /*Get AppDelegate. */
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         
-        let InvitationId = 0  // It is a false initial invitation ID, the true invitation ID should be returned from website.
+        let InvitationId: NSNumber = 0  // It is a false initial invitation ID, the true invitation ID should be returned from website.
         
-        let MeetingTimedata = try? NSJSONSerialization.dataWithJSONObject(self.meetingTimeArray, options: [])
-        let MeetingTimeJsonArray = NSString(data: MeetingTimedata!, encoding: NSUTF8StringEncoding)
+        let MeetingTimedata = try? JSONSerialization.data(withJSONObject: self.meetingTimeArray, options: [])
+        let MeetingTimeJsonArray = NSString(data: MeetingTimedata!, encoding: String.Encoding.utf8.rawValue)
         
-        let MeetingLocationdata = try? NSJSONSerialization.dataWithJSONObject(self.meetingLocationArray, options: [])
-        let MeetingLocationJsonArray = NSString(data: MeetingLocationdata!, encoding: NSUTF8StringEncoding)
+        let MeetingLocationdata = try? JSONSerialization.data(withJSONObject: self.meetingLocationArray, options: [])
+        let MeetingLocationJsonArray = NSString(data: MeetingLocationdata!, encoding: String.Encoding.utf8.rawValue)
         
         
         newInvitation = Invitation(InvitationId:InvitationId, MeetingName: self.meetingName.text!, MeetingDescription: self.meetingDescription.text, MeetingTime: self.meetingTimeArray, MeetingLocation: self.meetingLocationArray, InvitedFriendEmail: self.invitedFriendEmail!, InviterFriendEmail: appDelegate.accountInfo!.Email,selectedMeetingTime: "", selectedMeetingLocation: "", haveSelectedMeetingTimeFlag: false, haveSelectedMeetingLocationFlag: false)
         
         // Compose login information with device token, login Email, and loginPassword
-        let postString: NSString = "sInviterEmail=\(appDelegate.accountInfo!.Email)&sInvitedEmail=\(self.invitedFriendEmail!)&sMeetingName=\(self.meetingName.text!)&sMeetingDescription=\(self.meetingDescription.text!)&asMeetingTime=\(MeetingTimeJsonArray!)&asMeetingLocation=\(MeetingLocationJsonArray!)&iMeetingTimeNum=\(self.meetingTimeArray.count)&iMeetingLocationNum=\(self.meetingLocationArray.count)"
+        let postString: NSString = "sInviterEmail=\(appDelegate.accountInfo!.Email)&sInvitedEmail=\(self.invitedFriendEmail!)&sMeetingName=\(self.meetingName.text!)&sMeetingDescription=\(self.meetingDescription.text!)&asMeetingTime=\(MeetingTimeJsonArray!)&asMeetingLocation=\(MeetingLocationJsonArray!)&iMeetingTimeNum=\(self.meetingTimeArray.count)&iMeetingLocationNum=\(self.meetingLocationArray.count)" as NSString
         
         return postString
     }
@@ -173,17 +173,17 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
 
     
     /*  Succeed to send the added invitation information to supported web server. */
-    func succeedToSendTheInvitationInfo(jsonData: NSDictionary) -> Void {
+    func succeedToSendTheInvitationInfo(_ jsonData: NSDictionary) -> Void {
         
         /*******Update Invitation ID*********/
         /*Get AppDelegate. */
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let InvitationID: Int = jsonData.valueForKey("InvitationID") as! Int
+        let InvitationID: NSNumber = jsonData.value(forKey: "InvitationID") as! NSNumber
         
         self.newInvitation?.InvitationId = InvitationID
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             appDelegate.window?.rootViewController = appDelegate.tabBarController
         })    // set the sent invitation table view controller as the root view controller.
@@ -192,7 +192,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     
     
     /*  Failed to send the added invitation information to supported web server. */
-    func failedToSendTheInvitationInfo(errorMsg: NSString) -> Void {
+    func failedToSendTheInvitationInfo(_ errorMsg: NSString) -> Void {
         
         NSLog("Failed to save the invitation!");
         
@@ -205,9 +205,9 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     
     
     /* Process the http response from remote server after sending http request which sending added invitation information to supported web server. */
-    func receivedSendingTheInvitationResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedSendingTheInvitationResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         processHttpResponseAccordingToStatusCode(statusCode, data: data, processSuccessfulHttpResponse: self.succeedToSendTheInvitationInfo, processFailureHttpResponse: self.failedToSendTheInvitationInfo)
@@ -215,7 +215,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     }
     
     /* Override shouldPerformSegueWithIdentifier in order to check validation.  */
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any!) -> Bool {
  
         /* Check the validation of meeting name. */
         if identifier == "doneForAnSentInvitationVC" {
@@ -228,7 +228,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
 
                 /* Send meeting invitation request to the provider through HTTP request message. */
                 
-                let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/sendinvitation.php")!  // the web link of the provider.
+                let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/sendinvitation.php")!  // the web link of the provider.
       
                 let postString = createAnInvitationPostString()
                 
@@ -276,7 +276,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if text == "@\n" {
             self.resignFirstResponder()
@@ -289,7 +289,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
     }
 
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }

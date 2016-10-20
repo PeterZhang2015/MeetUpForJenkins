@@ -14,15 +14,15 @@ class MUAddMeetingLocationsTableViewController: UITableViewController {
     var  SelectRowMeetingLocation: String?
     
     
-    @IBAction func cancelForAddAMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForAddAMeetingLocationVC(_ segue:UIStoryboardSegue) {
         
     }
     
     
     
-    @IBAction func saveForAddAMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func saveForAddAMeetingLocationVC(_ segue:UIStoryboardSegue) {
         
-        let AMeetingInvitationVC = segue.sourceViewController as? MUAddAMeetingLocationViewController
+        let AMeetingInvitationVC = segue.source as? MUAddAMeetingLocationViewController
         
   
         //add the new time to the meeting time array
@@ -52,24 +52,24 @@ class MUAddMeetingLocationsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return meetingLocationArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         /* Get the cell according to it's identifier. */
-        let cell = tableView.dequeueReusableCellWithIdentifier("MeetingLocationCell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingLocationCell", for: indexPath) 
         
         
         // Set the meeting time as the text label of the cell.
-        cell.textLabel!.text = meetingLocationArray[indexPath.row]
+        cell.textLabel!.text = meetingLocationArray[(indexPath as NSIndexPath).row]
         
         return cell
         

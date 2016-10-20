@@ -11,6 +11,39 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginButtonDelegate{
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+     */
+    
+
+    
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+            // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+
 
     // test
     
@@ -24,7 +57,7 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
     var loginEmail: String = ""
     var loginPassword: String = ""
 
-    @IBAction func Login(sender: AnyObject) {
+    @IBAction func Login(_ sender: AnyObject) {
         
         let signInInputInfoValid = checkValidationForSignInInputInfo(loginEmailText, password: loginPasswordText)
         
@@ -43,7 +76,7 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
     }
     
     /*Check the validation for the signin input information. */
-    func checkValidationForSignInInputInfo(email: UITextField, password: UITextField) -> Bool {
+    func checkValidationForSignInInputInfo(_ email: UITextField, password: UITextField) -> Bool {
         
         if (email.text!.isEmpty) { //Check whether the Email is empty
             
@@ -102,73 +135,12 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
     
 
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
-        if (error != nil)
-        {
-            NSLog("error ===> %@", error.localizedDescription)
-            
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            
-            NSLog("Facebook login completely!")
-            
-            if result.grantedPermissions.contains("email")
-            {
-
-                let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"])
-            
-                
-                 graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-   
-                    if ((error) != nil)
-                    {
-                        // Process error
-                        NSLog("error ===> %@", error.localizedDescription)
-                    }
-                    else
-                    {
-                       // NSLog("fetched user: %@", result)
-   
-  
-                  //      let userName : NSString = result.valueForKey("name") as! NSString
-                   //     NSLog("User Name is: %@", userName)
-               
-                        self.loginEmail = result.valueForKey("email") as! String
-                        NSLog("User Email is: %@", self.loginEmail)
-                        
-                        self.loginPassword = ""
-                        
-                        
-                        self.loginApplication(self.loginEmail, userPassword: self.loginPassword, loginWithFacebook: 1)
-               
-                    }
-                })// end of graphRequest.startWithCompletionHandler
-            }// end of if result.grantedPermissions.contains("email")
-            
-  
-        }
-
-    }
-    
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
-        NSLog("Facebook login out!")
-    
-    }
-    
     
     /*  Succeed to signin an account for meetup applicaiton. */
-    func succeedToSignIn(jsonData: NSDictionary) -> Void {
+    func succeedToSignIn(_ jsonData: NSDictionary) -> Void {
         
         /*Get AppDelegate. */
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         /*Set the bIsLogin in AppDelegate to true. */
         appDelegate.bIsLogin = true
@@ -182,18 +154,18 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
         
         
         /******Initial viewcontroller in TabBar. *********/
-        let sentInvitationVC = self.storyboard!.instantiateViewControllerWithIdentifier("SentInvitationsVC") as! MUSentInvitationsTableViewController
+        let sentInvitationVC = self.storyboard!.instantiateViewController(withIdentifier: "SentInvitationsVC") as! MUSentInvitationsTableViewController
         
         
-        let receivedInvitationVC = self.storyboard!.instantiateViewControllerWithIdentifier("ReceivedInvitationsVC") as! MUReceivedInvitationsTableViewController
+        let receivedInvitationVC = self.storyboard!.instantiateViewController(withIdentifier: "ReceivedInvitationsVC") as! MUReceivedInvitationsTableViewController
         
-        let settingsVC = self.storyboard!.instantiateViewControllerWithIdentifier("SettingsVC") as! MUSettingsTableViewController
+        let settingsVC = self.storyboard!.instantiateViewController(withIdentifier: "SettingsVC") as! MUSettingsTableViewController
         
         
         self.tabBarController?.setViewControllers([sentInvitationVC, receivedInvitationVC, settingsVC], animated: false)
         
         /*Set the root view controller as the sent invitation view controller in tabbar. */
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             self.view.endEditing(true) // This is used to hide keyboard.
             
@@ -206,7 +178,7 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
     }
     
     /*  Failed to signin an account for meetup applicaiton. */
-    func failedToSignIn(errorMsg: NSString) -> Void {
+    func failedToSignIn(_ errorMsg: NSString) -> Void {
         
         NSLog("Fail to sign up");
         
@@ -218,9 +190,9 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
 
     
     /* Process the http response from remote server after sending http request which asked for signin an account. */
-    func receivedSignInResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedSignInResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         
@@ -229,20 +201,20 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
     
     }
     
-    func loginApplication(userEmail: String, userPassword: String, loginWithFacebook: Int) {
+    func loginApplication(_ userEmail: String, userPassword: String, loginWithFacebook: Int) {
         
 
         /* Get stored device token. */
-        let defaults = NSUserDefaults.standardUserDefaults()   //Set defaults to save and get data.
+        let defaults = UserDefaults.standard   //Set defaults to save and get data.
         
-        let deviceToken = defaults.objectForKey(GlobalConstants.kdeviceToken) as! String?
+        let deviceToken = defaults.object(forKey: GlobalConstants.kdeviceToken) as! String?
         /* Send device token together with loginEmailand longinPassword to the provider through HTTP request message. */
         
         
-        let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/login.php")!   // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/login.php")!   // the web link of the provider.
 
         // Compose login information with device token, login Email, and loginPassword
-        let postString: NSString = "devicetoken=\(deviceToken!)&sEmail=\(userEmail)&sPassword=\(userPassword)&iLoginWithFacebook=\(loginWithFacebook)"
+        let postString: NSString = "devicetoken=\(deviceToken!)&sEmail=\(userEmail)&sPassword=\(userPassword)&iLoginWithFacebook=\(loginWithFacebook)" as NSString
 
 
         let request = createHttpPostRequest(url, postString: postString)
@@ -271,7 +243,7 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }

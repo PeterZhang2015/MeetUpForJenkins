@@ -22,7 +22,7 @@ class MUAddAMeetingTimeViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let currentDate = NSDate()  // get the current date
+        let currentDate = Date()  // get the current date
         newMeetingTime.minimumDate = currentDate
         
         

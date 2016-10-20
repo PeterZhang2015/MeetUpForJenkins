@@ -12,15 +12,15 @@ import MapKit
 
 
 /* Send Alert view to the user. */
-func sendAlertView(title: String, message: String) {
+func sendAlertView(_ title: String, message: String) {
     
-    dispatch_async(dispatch_get_main_queue(), {
+    DispatchQueue.main.async(execute: {
         
         let alertView:UIAlertView = UIAlertView()
         alertView.title = title
         alertView.message = message
       //  alertView.delegate = self
-        alertView.addButtonWithTitle("OK")
+        alertView.addButton(withTitle: "OK")
         alertView.show()
     })
 
@@ -28,16 +28,16 @@ func sendAlertView(title: String, message: String) {
 
 
 /* Create Http request to the supported web server. */
-func createHttpPostRequest(destinationUrl: NSURL, postString: NSString)-> NSMutableURLRequest {
+func createHttpPostRequest(_ destinationUrl: URL, postString: NSString)-> NSMutableURLRequest {
  
-    let request:NSMutableURLRequest = NSMutableURLRequest(URL:destinationUrl)
+    let request:NSMutableURLRequest = NSMutableURLRequest(url:destinationUrl)
     
-    request.HTTPMethod = "POST";  //Post to PHP in provider.
+    request.httpMethod = "POST";  //Post to PHP in provider.
     
     //Set information as the HTTP body
-    request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-    let postData:NSData = postString.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion:true)!
-    let postLength:NSString = String( postData.length )
+    request.httpBody = postString.data(using: String.Encoding.utf8.rawValue)
+    let postData:Data = postString.data(using: String.Encoding.ascii.rawValue, allowLossyConversion:true)!
+    let postLength:NSString = String( postData.count ) as NSString
     
     request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
     
@@ -51,17 +51,16 @@ func createHttpPostRequest(destinationUrl: NSURL, postString: NSString)-> NSMuta
 
 
 /* Send Http request to supported web server for the information of an invitation and process corressponding response for an invitation. */
-func interactionWithRemoteServerForAnInvitationThroughHttpPost(invitationID: NSInteger, request: NSMutableURLRequest, processResponseFunc: (NSInteger, NSData, NSURLResponse) -> Void, failToGetHttpResponse: (NSInteger, NSString) -> Void) -> Void {
+func interactionWithRemoteServerForAnInvitationThroughHttpPost(_ invitationID: NSNumber, request: NSMutableURLRequest, processResponseFunc: @escaping (NSNumber, Data, URLResponse) -> Void, failToGetHttpResponse: @escaping (NSNumber, NSString) -> Void) -> Void {
     
     
-    let session = NSURLSession.sharedSession()
-
-    let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-
+    let session = URLSession.shared
+    let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
+  
         if (error != nil)
         {
             print("error: \(error)")
-            failToGetHttpResponse(invitationID, error!.localizedDescription)
+            failToGetHttpResponse(invitationID, error!.localizedDescription as NSString)
         }
         else
         {
@@ -74,7 +73,7 @@ func interactionWithRemoteServerForAnInvitationThroughHttpPost(invitationID: NSI
             else
             {
                 let errorMsg = "Unknown error"
-                failToGetHttpResponse(invitationID, errorMsg)
+                failToGetHttpResponse(invitationID, errorMsg as NSString)
             }
         }
     
@@ -84,17 +83,17 @@ func interactionWithRemoteServerForAnInvitationThroughHttpPost(invitationID: NSI
 }
 
 /* Send Http request to supported web server without invitation information and process corressponding response for an invitation. */
-func interactionWithRemoteServerWithoutInvitationThroughHttpPost(request: NSMutableURLRequest, processResponseFunc: (NSData, NSURLResponse) -> Void, failToGetHttpResponse: (NSString) -> Void) -> Void {
+func interactionWithRemoteServerWithoutInvitationThroughHttpPost(_ request: NSMutableURLRequest, processResponseFunc: @escaping (Data, URLResponse) -> Void, failToGetHttpResponse: @escaping (NSString) -> Void) -> Void {
     
     
-    let session = NSURLSession.sharedSession()
+    let session = URLSession.shared
     
-    let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+    let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
         
         if (error != nil)
         {
             print("error: \(error)")
-            failToGetHttpResponse(error!.localizedDescription)
+            failToGetHttpResponse(error!.localizedDescription as NSString)
         }
         else
         {
@@ -107,7 +106,7 @@ func interactionWithRemoteServerWithoutInvitationThroughHttpPost(request: NSMuta
             else
             {
                 let errorMsg = "Unknown error"
-                failToGetHttpResponse(errorMsg)
+                failToGetHttpResponse(errorMsg as NSString)
             }
         }
         
@@ -119,18 +118,18 @@ func interactionWithRemoteServerWithoutInvitationThroughHttpPost(request: NSMuta
 
 
 /* Process the HTTP response for an invitation according to the status code. */
-func processHttpResponseAccordingToStatusCode(invitationID: NSInteger, statusCode: Int, data: NSData, processSuccessfulHttpResponse: (invitationID: NSInteger, jsonData: NSDictionary) -> Void, processFailureHttpResponse: (invitationID: NSInteger, errorMsg: NSString) -> Void) -> Void {
+func processHttpResponseAccordingToStatusCode(_ invitationID: NSNumber, statusCode: Int, data: Data, processSuccessfulHttpResponse: (_ invitationID: NSNumber, _ jsonData: NSDictionary) -> Void, processFailureHttpResponse: (_ invitationID: NSNumber, _ errorMsg: NSString) -> Void) -> Void {
     
-    let jsonData:NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
+    let jsonData:NSDictionary = (try! JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
     
     if (statusCode >= 200 && statusCode < 300)
     {
         
-        let responseData:NSString  = NSString(data:data, encoding:NSUTF8StringEncoding)!
+        let responseData:NSString  = NSString(data:data, encoding:String.Encoding.utf8.rawValue)!
         
         NSLog("Response ==> %@", responseData);
         
-        let success:NSString = jsonData.valueForKey("Success") as! NSString
+        let success:NSString = jsonData.value(forKey: "Success") as! NSString
         
         NSLog("Success ==> %@", success);
         
@@ -139,7 +138,7 @@ func processHttpResponseAccordingToStatusCode(invitationID: NSInteger, statusCod
             /*Get required information Successfully. */
             NSLog("Get required information Successfully. ");
             
-            processSuccessfulHttpResponse(invitationID: invitationID, jsonData: jsonData)
+            processSuccessfulHttpResponse(invitationID, jsonData)
             
         }
         else
@@ -156,7 +155,7 @@ func processHttpResponseAccordingToStatusCode(invitationID: NSInteger, statusCod
                 
             }
             
-            processFailureHttpResponse(invitationID: invitationID, errorMsg: error_msg)
+            processFailureHttpResponse(invitationID, error_msg)
         }
         
     } // if (statusCode >= 200 && statusCode < 300)
@@ -167,25 +166,25 @@ func processHttpResponseAccordingToStatusCode(invitationID: NSInteger, statusCod
         
         let error_msg = "Wrong status code"
         
-        processFailureHttpResponse(invitationID: invitationID, errorMsg: error_msg)
+        processFailureHttpResponse(invitationID, error_msg as NSString)
     }  // end of the else of if (statusCode >= 200 && statusCode < 300)
 
 }
 
 
 /* Process the HTTP response without invitation according to the status code. */
-func processHttpResponseAccordingToStatusCode(statusCode: Int, data: NSData, processSuccessfulHttpResponse: (jsonData: NSDictionary) -> Void, processFailureHttpResponse: (errorMsg: NSString) -> Void) -> Void {
+func processHttpResponseAccordingToStatusCode(_ statusCode: Int, data: Data, processSuccessfulHttpResponse: (_ jsonData: NSDictionary) -> Void, processFailureHttpResponse: (_ errorMsg: NSString) -> Void) -> Void {
     
-    let jsonData:NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data, options:NSJSONReadingOptions.MutableContainers )) as! NSDictionary
+    let jsonData:NSDictionary = (try! JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.mutableContainers )) as! NSDictionary
     
     if (statusCode >= 200 && statusCode < 300)
     {
         
-        let responseData:NSString  = NSString(data:data, encoding:NSUTF8StringEncoding)!
+        let responseData:NSString  = NSString(data:data, encoding:String.Encoding.utf8.rawValue)!
         
         NSLog("Response ==> %@", responseData);
         
-        let success:NSString = jsonData.valueForKey("Success") as! NSString
+        let success:NSString = jsonData.value(forKey: "Success") as! NSString
         
         NSLog("Success ==> %@", success);
         
@@ -194,7 +193,7 @@ func processHttpResponseAccordingToStatusCode(statusCode: Int, data: NSData, pro
             /*Get required information Successfully. */
             NSLog("Get required information Successfully. ");
             
-            processSuccessfulHttpResponse(jsonData: jsonData)
+            processSuccessfulHttpResponse(jsonData)
             
         }
         else
@@ -211,7 +210,7 @@ func processHttpResponseAccordingToStatusCode(statusCode: Int, data: NSData, pro
                 
             }
             
-            processFailureHttpResponse(errorMsg: error_msg)
+            processFailureHttpResponse(error_msg)
         }
         
     } // if (statusCode >= 200 && statusCode < 300)
@@ -222,13 +221,13 @@ func processHttpResponseAccordingToStatusCode(statusCode: Int, data: NSData, pro
         
         let error_msg = "Wrong status code"
         
-        processFailureHttpResponse(errorMsg: error_msg)
+        processFailureHttpResponse(error_msg as NSString)
     }  // end of the else of if (statusCode >= 200 && statusCode < 300)
     
 }
 
 /*  Decode arrayMeetingInfo in the JASON value from response of supported web server as an invitation information. */
-func decodeInvitationInfo(arryMeetingInfo: AnyObject) -> Invitation {
+func decodeInvitationInfo(_ arryMeetingInfo: AnyObject) -> Invitation {
     
     var oneRowInvitation: Invitation?
     
@@ -255,7 +254,7 @@ func decodeInvitationInfo(arryMeetingInfo: AnyObject) -> Invitation {
 
 
 /*Add annotation to Map view. */
-func addAnnotationToMapView(mapView: MKMapView, annotationCoordinate: CLLocationCoordinate2D, annotationTitle: String) -> MKPointAnnotation {
+func addAnnotationToMapView(_ mapView: MKMapView, annotationCoordinate: CLLocationCoordinate2D, annotationTitle: String) -> MKPointAnnotation {
     
     let annotation = MKPointAnnotation()
     annotation.coordinate = annotationCoordinate
@@ -269,7 +268,7 @@ func addAnnotationToMapView(mapView: MKMapView, annotationCoordinate: CLLocation
 
 
 /*Get standardTimeExpressionForEstimatedTimeArrival. */
-func getStandardTimeExpression(leftTime: NSTimeInterval) -> String {
+func getStandardTimeExpression(_ leftTime: TimeInterval) -> String {
     
     var leftTimeExpression: String
     
@@ -302,7 +301,7 @@ func getStandardTimeExpression(leftTime: NSTimeInterval) -> String {
 }
 
 /*Add EstimatedTimeArrivalToTheMiddlePointOfTheRoute. */
-func addEstimatedTimeArrivalToRoute(mapView: MKMapView, route: MKRoute) -> Void {
+func addEstimatedTimeArrivalToRoute(_ mapView: MKMapView, route: MKRoute) -> Void {
     
     let points = route.polyline.points()
     
@@ -320,7 +319,7 @@ func addEstimatedTimeArrivalToRoute(mapView: MKMapView, route: MKRoute) -> Void 
 }  
 
 /*Show route from current location coordinate to the destination location coordinate in the map view. */
-func showRouteFromCurrentLocationToDestinationLocation(mapView: MKMapView, currentUserAddressCoordinate: CLLocationCoordinate2D, destinationLocationCoordinate: CLLocationCoordinate2D) -> Void {
+func showRouteFromCurrentLocationToDestinationLocation(_ mapView: MKMapView, currentUserAddressCoordinate: CLLocationCoordinate2D, destinationLocationCoordinate: CLLocationCoordinate2D) -> Void {
     
     /*******Set route from current location to destination meeting location in the map view. ***********/
     //  let currentLocationCoordinate: CLLocationCoordinate2D = (self.MapView.userLocation.location?.coordinate)!
@@ -332,18 +331,18 @@ func showRouteFromCurrentLocationToDestinationLocation(mapView: MKMapView, curre
     
     //request.requestsAlternateRoutes = true
     request.requestsAlternateRoutes = false
-    request.transportType = .Automobile
+    request.transportType = .automobile
     
     let directions = MKDirections(request: request)
 
-    directions.calculateDirectionsWithCompletionHandler {response, error in
+    directions.calculate {response, error in
         guard let unwrappedResponse = response else { return }
         
         for route in unwrappedResponse.routes {
             
             addEstimatedTimeArrivalToRoute(mapView, route: route)
      
-            mapView.addOverlay(route.polyline)
+            mapView.add(route.polyline)
 
             mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
 
@@ -354,7 +353,7 @@ func showRouteFromCurrentLocationToDestinationLocation(mapView: MKMapView, curre
 
 
 /*Show destination location coordinate in the map view. */
-func showDestinationLocationCoordinateInTheMapView(mapView: MKMapView, destinationLocationCoordinate: CLLocationCoordinate2D, destinationTitle: String) -> Void {
+func showDestinationLocationCoordinateInTheMapView(_ mapView: MKMapView, destinationLocationCoordinate: CLLocationCoordinate2D, destinationTitle: String) -> Void {
     
     /*********Add annotation for destination meeting location to the map view.**************/
     let span = MKCoordinateSpanMake(0.02, 0.02)
@@ -363,14 +362,16 @@ func showDestinationLocationCoordinateInTheMapView(mapView: MKMapView, destinati
     
     mapView.setRegion(region, animated: true)
     
-    addAnnotationToMapView(mapView, annotationCoordinate: destinationLocationCoordinate, annotationTitle: destinationTitle)
+    let annotation = addAnnotationToMapView(mapView, annotationCoordinate: destinationLocationCoordinate, annotationTitle: destinationTitle)
+    
+    mapView.selectAnnotation(annotation, animated: true)  // select that annotation to display to the user.
     
 }
 
 
 
 /*Show routes to destination location address in the map view. */
-func showRoutesToDestinationLocationAddressInTheMapView(mapView: MKMapView, currentUserCoordinate: CLLocationCoordinate2D, destinationLocationAddress: String, destinationTitle: String) ->  Void {
+func showRoutesToDestinationLocationAddressInTheMapView(_ mapView: MKMapView, currentUserCoordinate: CLLocationCoordinate2D, destinationLocationAddress: String, destinationTitle: String) ->  Void {
     
    
     /* Pass the information of meeting location coordinate to the MUGetToMeetingLocationViewController*/
@@ -382,10 +383,10 @@ func showRoutesToDestinationLocationAddressInTheMapView(mapView: MKMapView, curr
         
         if((error) != nil)
         {
-            NSLog("Error: %@",(error?.description)!)
+            NSLog("Error: %@",(error?.localizedDescription)!)
             
             let title = "Can not find the address! "
-            let message = (error?.description)!
+            let message = (error?.localizedDescription)!
             sendAlertView(title, message: message)
         }
         
@@ -410,9 +411,9 @@ func showRoutesToDestinationLocationAddressInTheMapView(mapView: MKMapView, curr
 
 
 /*Adde action for UIAlertController. */
-func addActionForUIAlertController(alertController: UIAlertController ,actionTitle: String, actionProcess:(Void) -> Void) -> Void {
+func addActionForUIAlertController(_ alertController: UIAlertController ,actionTitle: String, actionProcess:@escaping (Void) -> Void) -> Void {
     
-    alertController.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: { (action: UIAlertAction!) in
+    alertController.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action: UIAlertAction!) in
         
         actionProcess()
         

@@ -37,7 +37,7 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     let locationManager = CLLocationManager()
 
     /*Set location manager parameters for the map view. */
-    func setLocationManagerParameters(locationManager: CLLocationManager) -> Void {
+    func setLocationManagerParameters(_ locationManager: CLLocationManager) -> Void {
         
         // Ask for Authorisation from the User. For use in background.
         locationManager.requestAlwaysAuthorization()
@@ -80,39 +80,40 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     
     
     
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        
-        currentUserAddressCoordinate = newLocation.coordinate
-        
-        self.MapView.showsUserLocation = true
-        
-        NSLog("didUpdateToLocation-currentUserAddressCoordinate.latitude:%d", self.currentUserAddressCoordinate.latitude)
-        NSLog("didUpdateToLocation-currentUserAddressCoordinate.longitude:%d", self.currentUserAddressCoordinate.longitude)
-        
-        
-        //       MKCoordinateRegionMakeWithDistance(currentUserAddressCoordinate, 1000, 1000)
-        
-        
-        let span = MKCoordinateSpanMake(0.02, 0.02)
-        
-        let region = MKCoordinateRegionMake(currentUserAddressCoordinate, span)
-        
-        self.MapView.setRegion(region, animated: true)
-        
-        self.MapView.setCenterCoordinate(currentUserAddressCoordinate, animated: true)
-        self.MapView.centerCoordinate = self.currentUserAddressCoordinate
-        
-        
-        locationManager.stopUpdatingLocation()
-
-        
-    }
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+//        
+//        currentUserAddressCoordinate = newLocation.coordinate
+//        
+//        self.MapView.showsUserLocation = true
+//        
+//        NSLog("didUpdateToLocation-currentUserAddressCoordinate.latitude:%d", self.currentUserAddressCoordinate.latitude)
+//        NSLog("didUpdateToLocation-currentUserAddressCoordinate.longitude:%d", self.currentUserAddressCoordinate.longitude)
+//        
+//        
+//        //       MKCoordinateRegionMakeWithDistance(currentUserAddressCoordinate, 1000, 1000)
+//        
+//        
+//        let span = MKCoordinateSpanMake(0.02, 0.02)
+//        
+//        let region = MKCoordinateRegionMake(currentUserAddressCoordinate, span)
+//        
+//        self.MapView.setRegion(region, animated: true)
+//        
+//        self.MapView.setCenter(currentUserAddressCoordinate, animated: true)
+//        self.MapView.centerCoordinate = self.currentUserAddressCoordinate
+//        
+//        
+//        locationManager.stopUpdatingLocation()
+//
+//        
+//    }
 
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blueColor()
+        renderer.strokeColor = UIColor.blue
     
         renderer.alpha = 0.7;
         renderer.lineWidth = 4.0;
@@ -123,7 +124,7 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     
     
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
             //return nil so map draws default view for it (eg. blue dot)...
@@ -133,7 +134,7 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
         let reuseId = "test"
         
         
-        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if anView == nil {
             anView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             //  anView!.image = UIImage(named:"meetupIcon.png")
@@ -170,7 +171,7 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     }
     
     
-    func estimatedTimeArrivalCallOut(annotation: MKAnnotation) -> UIView {
+    func estimatedTimeArrivalCallOut(_ annotation: MKAnnotation) -> UIView {
         
         let etsUIView = UIView()
         
@@ -182,14 +183,14 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
 //        
 //        etsUIView.addSubview(label)
         
-        etsUIView.backgroundColor = .greenColor()
+        etsUIView.backgroundColor = UIColor.green
         
         
         
-        let widthConstraint = NSLayoutConstraint(item: etsUIView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 40)
+        let widthConstraint = NSLayoutConstraint(item: etsUIView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
         etsUIView.addConstraint(widthConstraint)
         
-        let heightConstraint = NSLayoutConstraint(item: etsUIView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 20)
+        let heightConstraint = NSLayoutConstraint(item: etsUIView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
         etsUIView.addConstraint(heightConstraint)
         
         return etsUIView
@@ -208,17 +209,17 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     
     
     
-    func getRightPinColor (pinName:String)-> MKPinAnnotationColor{
+    func getRightPinColor (_ pinName:String)-> MKPinAnnotationColor{
         
         var correctPin = MKPinAnnotationColor.init(rawValue: 0)
         
         switch pinName
         {
         case "Meeting location":
-            correctPin = MKPinAnnotationColor.Red
+            correctPin = MKPinAnnotationColor.red
             break
         default:
-            correctPin = MKPinAnnotationColor.Purple
+            correctPin = MKPinAnnotationColor.purple
             break
             
         }
@@ -226,17 +227,17 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
         return correctPin!
     }
     
-    func getRightPinTintColor (pinName:String)-> UIColor{
+    func getRightPinTintColor (_ pinName:String)-> UIColor{
         
         var correctTintPin = UIColor()
         
         switch pinName
         {
         case "Meeting location":
-            correctTintPin = UIColor.redColor()
+            correctTintPin = UIColor.red
             break
         default:
-            correctTintPin = UIColor.clearColor()
+            correctTintPin = UIColor.clear
             break
         }
         

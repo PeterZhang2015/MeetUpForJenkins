@@ -25,7 +25,7 @@ class MUDetailMeetingLocationViewController: UIViewController, UIPickerViewDeleg
     
     var  selectedMeetingLocation: String?
     
-    @IBAction func CancelFromGetToMeetingLocationVC(segue:UIStoryboardSegue) {
+    @IBAction func CancelFromGetToMeetingLocationVC(_ segue:UIStoryboardSegue) {
         
     }
     
@@ -47,19 +47,19 @@ class MUDetailMeetingLocationViewController: UIViewController, UIPickerViewDeleg
         
         if (self.HaveSelected == 1)
         {
-            GetToMeetLocationButton.hidden = false
+            GetToMeetLocationButton.isHidden = false
         }
         else
         {
             
-            GetToMeetLocationButton.hidden = true
+            GetToMeetLocationButton.isHidden = true
         }
   
         
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(animated: Bool)
+    override func viewWillDisappear(_ animated: Bool)
     {
         
     }
@@ -69,11 +69,11 @@ class MUDetailMeetingLocationViewController: UIViewController, UIPickerViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponentsInPickerView(_ pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if ((self.HaveSelected != nil) && (self.HaveSelected == 1))
         {
@@ -89,7 +89,7 @@ class MUDetailMeetingLocationViewController: UIViewController, UIPickerViewDeleg
     }
     
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
         if ((self.HaveSelected != nil) && (self.HaveSelected == 1))
         {
@@ -102,13 +102,13 @@ class MUDetailMeetingLocationViewController: UIViewController, UIPickerViewDeleg
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SegueToGetToMeetingLocationVC"{  /* Transfer
             from MUDetailMeetingLocationViewController to MUGetToMeetingLocationViewController*/
             
             
-            let destinationNavigationController:UINavigationController = segue.destinationViewController as! UINavigationController
+            let destinationNavigationController:UINavigationController = segue.destination as! UINavigationController
             
             let getToMeetingLocationVC:MUGetToMeetingLocationViewController = destinationNavigationController.topViewController as! MUGetToMeetingLocationViewController
             

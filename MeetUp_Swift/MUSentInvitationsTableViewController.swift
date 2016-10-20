@@ -18,21 +18,21 @@ class MUSentInvitationsTableViewController: UITableViewController {
     
     
  
-    @IBAction func cancelForDetailSentInvitationVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailSentInvitationVC(_ segue:UIStoryboardSegue) {
 
         
     }
     
 
-    @IBAction func cancelForAnSentInvitationVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForAnSentInvitationVC(_ segue:UIStoryboardSegue) {
 
         
     }
     
     
-    @IBAction func doneForAnSentInvitationVC(segue:UIStoryboardSegue) {
+    @IBAction func doneForAnSentInvitationVC(_ segue:UIStoryboardSegue) {
         
-        if let AnSentInvitationVC = segue.sourceViewController as? MUAnSentInvitationViewController {
+        if let AnSentInvitationVC = segue.source as? MUAnSentInvitationViewController {
             
             //add the new invitation to the invitation array
             Invitations.append(AnSentInvitationVC.newInvitation!)
@@ -51,7 +51,7 @@ class MUSentInvitationsTableViewController: UITableViewController {
         self.haveGotSentInvitationInfo = false
         
         // It is used to trigger cellForRowAtIndexPath for updating table data in time.
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             
             self.tableView.reloadData()
             
@@ -60,11 +60,11 @@ class MUSentInvitationsTableViewController: UITableViewController {
     }
     
     /*  Update Sent invitations table. */
-    func updateSentInvitationsTable(jsonData: NSDictionary) -> Void {
+    func updateSentInvitationsTable(_ jsonData: NSDictionary) -> Void {
         
-        let invitationNum = jsonData.valueForKey("invitationNum") as! Int
+        let invitationNum = jsonData.value(forKey: "invitationNum") as! Int
         
-        let arraySentMeetingInfo = jsonData.valueForKey("arraySentMeetingInfo") as! NSArray
+        let arraySentMeetingInfo = jsonData.value(forKey: "arraySentMeetingInfo") as! NSArray
         
         self.Invitations.removeAll()
         
@@ -72,7 +72,7 @@ class MUSentInvitationsTableViewController: UITableViewController {
         {
             var oneRowInvitation: Invitation?
             
-            oneRowInvitation = decodeInvitationInfo(arraySentMeetingInfo[index])
+            oneRowInvitation = decodeInvitationInfo(arraySentMeetingInfo[index] as AnyObject)
             
             self.Invitations.append(oneRowInvitation!)
             self.tableView.reloadData()
@@ -81,14 +81,14 @@ class MUSentInvitationsTableViewController: UITableViewController {
     }
     
     /*  Succeed to get all sent invitation information. */
-    func succeedToGetAllSentInvitationInfo(jsonData: NSDictionary) -> Void {
+    func succeedToGetAllSentInvitationInfo(_ jsonData: NSDictionary) -> Void {
         
         updateSentInvitationsTable(jsonData)
         
         self.haveGotSentInvitationInfo = true
         
         // It is used to trigger cellForRowAtIndexPath for updating table data in time.
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             
             self.tableView.reloadData()
             
@@ -98,7 +98,7 @@ class MUSentInvitationsTableViewController: UITableViewController {
     
     
     /*  Failed to get all sent invitation information. */
-    func failedToGetAllSentInvitationInfo(errorMsg: NSString) -> Void {
+    func failedToGetAllSentInvitationInfo(_ errorMsg: NSString) -> Void {
         
         NSLog("Fail to get all sent invitation information.");
         
@@ -109,9 +109,9 @@ class MUSentInvitationsTableViewController: UITableViewController {
     }
     
     /* Process the http response from remote server after sending http request which asked for all sent invitation information. */
-    func receivedAllSentInvitationInfoResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedAllSentInvitationInfoResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         processHttpResponseAccordingToStatusCode(statusCode, data: data, processSuccessfulHttpResponse: self.succeedToGetAllSentInvitationInfo, processFailureHttpResponse: self.failedToGetAllSentInvitationInfo)
@@ -120,11 +120,11 @@ class MUSentInvitationsTableViewController: UITableViewController {
 
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(animated);
         
         // It is used to trigger cellForRowAtIndexPath for updating table data in time.
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             
             self.tableView.reloadData()
             
@@ -133,12 +133,12 @@ class MUSentInvitationsTableViewController: UITableViewController {
         if ((self.haveGotSentInvitationInfo != true))
         {
             
-            let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getallsentinvitationinfo.php")! // the web link of the provider.
+            let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getallsentinvitationinfo.php")! // the web link of the provider.
             
             /*Get AppDelegate. */
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             // Compose login information with device token, login Email, and loginPassword
-            let postString: NSString = "sInviterEmail=\(appDelegate.accountInfo!.Email)"
+            let postString: NSString = "sInviterEmail=\(appDelegate.accountInfo!.Email)" as NSString
             NSLog("Input Email for querying sent invitation info ==> %@", appDelegate.accountInfo!.Email);
             
             let request = createHttpPostRequest(url, postString: postString)
@@ -157,41 +157,41 @@ class MUSentInvitationsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return Invitations.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 
         /* Get the cell according to it's identifier. */
-        let cell = tableView.dequeueReusableCellWithIdentifier("SentInvitationsCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SentInvitationsCell", for: indexPath)
         
         
         // Set the meeting name as the text label of the cell.
-        cell.textLabel!.text = self.Invitations[indexPath.row].MeetingName
+        cell.textLabel!.text = self.Invitations[(indexPath as NSIndexPath).row].MeetingName
 
         return cell
 
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        SelectRowInvitation = self.Invitations[indexPath.row]
+        SelectRowInvitation = self.Invitations[(indexPath as NSIndexPath).row]
   
         //performSegueWithIdentifier("SegueToDetailSentInvitationVC", sender: self)
 
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
-        SelectRowInvitation = self.Invitations[indexPath.row]
+        SelectRowInvitation = self.Invitations[(indexPath as NSIndexPath).row]
         
         //performSegueWithIdentifier("SegueToDetailSentInvitationVC", sender: self)
         
@@ -199,7 +199,7 @@ class MUSentInvitationsTableViewController: UITableViewController {
     }
     
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SegueToDetailSentInvitationVC"{  /* Transfer Invitation information of the selected row from MUSentInvitationsTableViewController to MUDetailSentInvitationViewController*/
             
@@ -208,7 +208,7 @@ class MUSentInvitationsTableViewController: UITableViewController {
 //            
 //            let detailSentInvitationVC:MUDetailSentInvitationViewController = destinationNavigationController.topViewController as! MUDetailSentInvitationViewController
             
-            let detailSentInvitationVC:MUDetailSentInvitationViewController = segue.destinationViewController as! MUDetailSentInvitationViewController
+            let detailSentInvitationVC:MUDetailSentInvitationViewController = segue.destination as! MUDetailSentInvitationViewController
             
             detailSentInvitationVC.AnInvitation = self.SelectRowInvitation
             detailSentInvitationVC.sourceVcType = GlobalConstants.kSentInvitationVC  // 0-Sent Invitation VC, 1-Received Invitation VC

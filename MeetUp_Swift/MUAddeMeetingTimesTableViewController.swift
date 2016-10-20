@@ -14,26 +14,26 @@ class MUAddeMeetingTimesTableViewController: UITableViewController {
     var  SelectRowMeetingTime: String?
     
     
-    @IBAction func cancelForAddAMeetingTimeVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForAddAMeetingTimeVC(_ segue:UIStoryboardSegue) {
         
     }
     
     
     
-    @IBAction func saveForAddAMeetingTimeVC(segue:UIStoryboardSegue) {
+    @IBAction func saveForAddAMeetingTimeVC(_ segue:UIStoryboardSegue) {
         
-        let AMeetingInvitationVC = segue.sourceViewController as? MUAddAMeetingTimeViewController
+        let AMeetingInvitationVC = segue.source as? MUAddAMeetingTimeViewController
         
         let datePicker = AMeetingInvitationVC?.newMeetingTime
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         
        // dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
        // dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss";
         
-        let strDate = dateFormatter.stringFromDate(datePicker!.date)
+        let strDate = dateFormatter.string(from: datePicker!.date)
         
         //add the new time to the meeting time array
         meetingTimeArray.append(strDate)
@@ -64,25 +64,25 @@ class MUAddeMeetingTimesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return meetingTimeArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         /* Get the cell according to it's identifier. */
-        let cell = tableView.dequeueReusableCellWithIdentifier("MeetingTimeCell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingTimeCell", for: indexPath) 
         
         
         // Set the meeting time as the text label of the cell.
-        cell.textLabel!.text = meetingTimeArray[indexPath.row]
+        cell.textLabel!.text = meetingTimeArray[(indexPath as NSIndexPath).row]
         
         return cell
         

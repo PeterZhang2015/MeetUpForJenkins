@@ -16,7 +16,7 @@ class MUDetailInviterFriendViewController: UIViewController {
  
     var InviterFriendEmail: String?
     
-    @IBAction func cancelForDetailInviterFriendVC(segue:UIStoryboardSegue) {
+    @IBAction func cancelForDetailInviterFriendVC(_ segue:UIStoryboardSegue) {
         
     }
     
@@ -25,8 +25,8 @@ class MUDetailInviterFriendViewController: UIViewController {
         super.viewDidLoad()
         
         
-        inviterEmail.userInteractionEnabled = true
-        inviterEmail.editable = false
+        inviterEmail.isUserInteractionEnabled = true
+        inviterEmail.isEditable = false
         
         inviterEmail.text = InviterFriendEmail!
         // Do any additional setup after loading the view.

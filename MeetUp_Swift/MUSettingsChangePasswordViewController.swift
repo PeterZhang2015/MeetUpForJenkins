@@ -14,13 +14,13 @@ class MUSettingsChangePasswordViewController: UIViewController {
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var newPasswordAgain: UITextField!
 
-    @IBAction func updateForChangePasswordVC(sender: AnyObject) {
+    @IBAction func updateForChangePasswordVC(_ sender: AnyObject) {
         
     }
     
     
     /*Check the validation for the change password information. */
-    func checkValidationForSignUpInputInfo(currentPassword: UITextField, newPassword: UITextField, newPasswordAgain: UITextField) -> Bool {
+    func checkValidationForSignUpInputInfo(_ currentPassword: UITextField, newPassword: UITextField, newPasswordAgain: UITextField) -> Bool {
         
         if (currentPassword.text!.isEmpty) { //Check whether the Current Password is empty
             
@@ -60,7 +60,7 @@ class MUSettingsChangePasswordViewController: UIViewController {
     
     
     /*  Succeed to change password for the user account. */
-    func succeedToChangePassword(jsonData: NSDictionary) -> Void {
+    func succeedToChangePassword(_ jsonData: NSDictionary) -> Void {
         
         /*Show the successful result. */
         NSLog("Change Password Successfully");
@@ -69,10 +69,10 @@ class MUSettingsChangePasswordViewController: UIViewController {
         let message = "Change Passsword Successfully!"
         sendAlertView(title, message: message)
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             /*Get AppDelegate. */
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             /*Set the current view controller as the main tab bar of the application. */
             appDelegate.window?.rootViewController = appDelegate.tabBarController
@@ -82,7 +82,7 @@ class MUSettingsChangePasswordViewController: UIViewController {
     }
     
     /*  Failed to change password for the user account. */
-    func failedToChangePassword(errorMsg: NSString) -> Void {
+    func failedToChangePassword(_ errorMsg: NSString) -> Void {
         
         NSLog("Failed To Change Passsword!");
         
@@ -93,9 +93,9 @@ class MUSettingsChangePasswordViewController: UIViewController {
     }
     
     /* Process the http response from remote server after sending http request which asked for changing password. */
-    func receivedChangingPasswordResultFromRemoteServer(data: NSData, response: NSURLResponse) -> Void {
+    func receivedChangingPasswordResultFromRemoteServer(_ data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         
@@ -105,7 +105,7 @@ class MUSettingsChangePasswordViewController: UIViewController {
     }
     
     /* Override shouldPerformSegueWithIdentifier in order to check validation.  */
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any!) -> Bool {
         
         /* Check the validation of meeting name. */
         if identifier == "SegueFromChangePasswordVC" {
@@ -114,13 +114,13 @@ class MUSettingsChangePasswordViewController: UIViewController {
             
             if (changePasswordInfoValid)
             {
-                let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/changepassword.php")!  // the web link of the provider.
+                let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/changepassword.php")!  // the web link of the provider.
    
                 /*Get AppDelegate. */
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let myEmail = appDelegate.accountInfo!.Email
                 // Compose change password information with user email, current password, and new password.
-                let postString: NSString = "sEmail=\(myEmail)&sCurrentPassword=\(currentPassword.text!)&sNewPassword=\(newPassword.text!)"
+                let postString: NSString = "sEmail=\(myEmail)&sCurrentPassword=\(currentPassword.text!)&sNewPassword=\(newPassword.text!)" as NSString
                 
                 let request = createHttpPostRequest(url, postString: postString)
                 

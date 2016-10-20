@@ -20,18 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var tabBarController: UITabBarController?    // Main tab bar view controller for the application.
     
-    let defaults = NSUserDefaults.standardUserDefaults()   //Set defaults to save and get data.
+    let defaults = UserDefaults.standard   //Set defaults to save and get data.
     
 
     /*Handling when the application launched in didFinishLaunchingWithOptions function. */
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Set lauched view.
        // self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)  // Get the storyboard according to it's name.
         
-        self.tabBarController = storyboard.instantiateViewControllerWithIdentifier("MainTabBarVC") as? UITabBarController // instantiate desired ViewController.
+        self.tabBarController = storyboard.instantiateViewController(withIdentifier: "MainTabBarVC") as? UITabBarController // instantiate desired ViewController.
         
         if ((self.bIsLogin) != true){   // BOOL value to check if user is logged in or not.If user succefully logged in set value of this as true else false.
             
@@ -48,31 +48,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /* Register APNS in order to get device token for futher push notification function. */
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         print("Got token data! (deviceToken)")
         
-        let characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+        let characterSet: CharacterSet = CharacterSet( charactersIn: "<>" )
 
         let deviceTokenString: String = ( deviceToken.description as NSString )
-            .stringByTrimmingCharactersInSet( characterSet )
-            .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+            .trimmingCharacters( in: characterSet )
+            .replacingOccurrences( of: " ", with: "" ) as String
         
         print(deviceTokenString )
         
-        defaults.setObject(deviceTokenString, forKey: GlobalConstants.kdeviceToken)  // Save the retrived device token, and send it to provider when login the application.
+        defaults.set(deviceTokenString, forKey: GlobalConstants.kdeviceToken)  // Save the retrived device token, and send it to provider when login the application.
         
  
         
     }
     
     /* Fail to register APNS. */
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Couldn’t register to APNS: (error)")
     }
     
     /* Receives push notification from APNS. */
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject: AnyObject]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         
         print("!!!!!!Received Push Notification from APNS!!!!!")
         
@@ -86,55 +86,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    func application(application: UIApplication,
-                     openURL url: NSURL,
+    func application(_ application: UIApplication,
+                     open url: URL,
                              sourceApplication: String?,
-                             annotation: AnyObject) -> Bool {
+                             annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(
             application,
-            openURL: url,
+            open: url,
             sourceApplication: sourceApplication,
             annotation: annotation)
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         FBSDKAppEvents.activateApp()
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
     
     
     /*Show the login page of the MeetUp application.*/
-    func loginMeetUpApplication(application: UIApplication) -> Void {
+    func loginMeetUpApplication(_ application: UIApplication) -> Void {
         
-        let types: UIUserNotificationType = [UIUserNotificationType.Badge, UIUserNotificationType.Alert, UIUserNotificationType.Sound]
+        let types: UIUserNotificationType = [UIUserNotificationType.badge, UIUserNotificationType.alert, UIUserNotificationType.sound]
         
-        let settings: UIUserNotificationSettings = UIUserNotificationSettings( forTypes: types, categories: nil )
+        let settings: UIUserNotificationSettings = UIUserNotificationSettings( types: types, categories: nil )
         
         application.registerUserNotificationSettings( settings )
         application.registerForRemoteNotifications()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)  // Get the storyboard according to it's name.
         
-        let LaunchViewController = storyboard.instantiateViewControllerWithIdentifier("LaunchVC") as! MULaunchViewController   // Get the MULaunchViewController according to it's storyboard identifier.
+        let LaunchViewController = storyboard.instantiateViewController(withIdentifier: "LaunchVC") as! MULaunchViewController   // Get the MULaunchViewController according to it's storyboard identifier.
         
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = LaunchViewController    // Set the MUMainViewController as the RootViewController.
@@ -143,9 +143,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /* Process the received push notifications. */
-    func receivedNotificationPro(aps: NSDictionary) -> Void {
+    func receivedNotificationPro(_ aps: NSDictionary) -> Void {
         
-        if let invitationID = aps["invitationID"] as? NSInteger {
+        if let invitationID = aps["invitationID"] as? NSNumber {
             
             NSLog("invitationID ==> %d", invitationID);
   
@@ -202,14 +202,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /*  Show root tabbar item of received invitations to the user. */
-    func showReceivedInvitationsTabbar(aReceivedInvitation: Invitation) -> Void {
+    func showReceivedInvitationsTabbar(_ aReceivedInvitation: Invitation) -> Void {
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             let navigationVC: UINavigationController = self.tabBarController?.viewControllers![1] as! UINavigationController
             
             /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-            navigationVC.navigationBar.translucent = false
+            navigationVC.navigationBar.isTranslucent = false
             /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
             
             let receivedInvitationVC: MUReceivedInvitationsTableViewController = navigationVC.visibleViewController as! MUReceivedInvitationsTableViewController
@@ -232,7 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Failed to get the invitation information. */
-    func failedToGetTheInvitationInfo(invitationID: NSInteger, errorMsg: NSString) -> Void {
+    func failedToGetTheInvitationInfo(_ invitationID: NSNumber, errorMsg: NSString) -> Void {
         
 
         let title = "Failed To Get Invitation Information!"
@@ -243,15 +243,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Succeed to get the invitation information. */
-    func succeedToGetTheInvitationInfo(invitationID: NSInteger, jsonData: NSDictionary) -> Void {
+    func succeedToGetTheInvitationInfo(_ invitationID: NSNumber, jsonData: NSDictionary) -> Void {
         /*Get information from response. */
-        let meetingName: String = jsonData.valueForKey("MeetingName") as! String
+        let meetingName: String = jsonData.value(forKey: "MeetingName") as! String
         
-        let meetingDescription: String = jsonData.valueForKey("MeetingDescription") as! String
-        let invitedEmail: String = jsonData.valueForKey("InvitedEmail") as! String
-        let inviterEmail: String = jsonData.valueForKey("InviterEmail") as! String
-        let meetingTime: [String] = jsonData.valueForKey("MeetingTime") as! [String]
-        let meetingLocation: [String] = jsonData.valueForKey("MeetingLocation") as! [String]
+        let meetingDescription: String = jsonData.value(forKey: "MeetingDescription") as! String
+        let invitedEmail: String = jsonData.value(forKey: "InvitedEmail") as! String
+        let inviterEmail: String = jsonData.value(forKey: "InviterEmail") as! String
+        let meetingTime: [String] = jsonData.value(forKey: "MeetingTime") as! [String]
+        let meetingLocation: [String] = jsonData.value(forKey: "MeetingLocation") as! [String]
         
  
         /*Initial received invitations. */
@@ -262,9 +262,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Process the http response from remote server after sending http request which asked for invitation information according to invitation ID. */
-    func receivedInvitationInfoFromRemoteServer(invitationID: NSInteger, data: NSData, response: NSURLResponse) -> Void {
+    func receivedInvitationInfoFromRemoteServer(_ invitationID: NSNumber, data: Data, response: URLResponse) -> Void {
   
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response status code: %ld", statusCode);
         
         
@@ -273,15 +273,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Process the received push notifications on new inviation for invited user. */
-    func notifyNewInvitationForInvitedUser(invitationID: NSInteger, eventType: NSInteger) -> Void {
+    func notifyNewInvitationForInvitedUser(_ invitationID: NSNumber, eventType: NSInteger) -> Void {
        
         NSLog("#########Received push notification 1 ==> Notify invited user about coming new invitation")
  
         /* Send Http message to supported web server in order to get the invitation information. */
-        let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getinvitationinfo.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getinvitationinfo.php")!  // the web link of the provider.
         
         // Compose request information.
-        let postString: NSString = "iInvitationID=\(invitationID)"
+        let postString: NSString = "iInvitationID=\(invitationID)" as NSString
         
         let request = createHttpPostRequest(url, postString: postString)
 
@@ -291,7 +291,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   
     /*  Failed to get the invitation meeting time. */
-    func failedToGetTheInvitationMeetingTime(invitationID: NSInteger, errorMsg: NSString) -> Void {
+    func failedToGetTheInvitationMeetingTime(_ invitationID: NSNumber, errorMsg: NSString) -> Void {
   
         let title = "Failed To Get Invitation meeting time!"
         let message = errorMsg as String
@@ -300,23 +300,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /*Find the matched index in the sent invitations table view controller. */
-    func findIndexInSentInvitationTablesByInvitaionId(invitationID: NSInteger, sentInvitationsVC: MUSentInvitationsTableViewController) -> (matchResult: Bool, matchedIndex: NSIndexPath) {
+    func findIndexInSentInvitationTablesByInvitaionId(_ invitationID: NSNumber, sentInvitationsVC: MUSentInvitationsTableViewController) -> (matchResult: Bool, matchedIndex: IndexPath) {
         
         
         var matchResult: Bool = false    /* The result of unMatched. */
-        var matchedIndex: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0) /*Initialization. */
+        var matchedIndex: IndexPath = IndexPath(row: 0, section: 0) /*Initialization. */
         
 
         
         /*Find the matched row according to invitation ID. */
         for section in 0..<sentInvitationsVC.tableView.numberOfSections {
             
-            for row in 0..<sentInvitationsVC.tableView.numberOfRowsInSection(section) {
+            for row in 0..<sentInvitationsVC.tableView.numberOfRows(inSection: section) {
                 
-                let indexPath = NSIndexPath(forRow: row, inSection: section)
+                let indexPath = IndexPath(row: row, section: section)
                 
                 
-                if(sentInvitationsVC.Invitations[indexPath.row].InvitationId == invitationID)
+                if(sentInvitationsVC.Invitations[(indexPath as NSIndexPath).row].InvitationId == invitationID)
                 {
                     matchResult = true
                     matchedIndex = indexPath
@@ -331,7 +331,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Update selected meeting time for the invitation in the corresponding row in sent invitations view controller. */
-    func updateMeetingTimeForTheInvitationInfo(invitation: Invitation, selectedMeetingTime: String) -> Void {
+    func updateMeetingTimeForTheInvitationInfo(_ invitation: Invitation, selectedMeetingTime: String) -> Void {
         
         invitation.haveSelectedMeetingTimeFlag = true
         
@@ -349,7 +349,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVC: UINavigationController = self.tabBarController?.viewControllers![0] as! UINavigationController
         
         /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-        navigationVC.navigationBar.translucent = false
+        navigationVC.navigationBar.isTranslucent = false
         /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
         
         let sentInvitationsVC: MUSentInvitationsTableViewController = navigationVC.viewControllers[0] as! MUSentInvitationsTableViewController
@@ -360,9 +360,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Pass meeting time to detail sent invitation and show the detail sent invitation to the user. */
-    func passMeetingTimeToDetailSentInvitationsTabbar(invitationID: NSInteger, selectedMeetingTime: String) -> Void {
+    func passMeetingTimeToDetailSentInvitationsTabbar(_ invitationID: NSNumber, selectedMeetingTime: String) -> Void {
 
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             let sentInvitationsVC: MUSentInvitationsTableViewController = self.getSentInvitationsTableVC()
             
@@ -371,12 +371,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (result.matchResult)
             {
                 
-                self.updateMeetingTimeForTheInvitationInfo(sentInvitationsVC.Invitations[result.matchedIndex.row], selectedMeetingTime: selectedMeetingTime)
+                self.updateMeetingTimeForTheInvitationInfo(sentInvitationsVC.Invitations[(result.matchedIndex as NSIndexPath).row], selectedMeetingTime: selectedMeetingTime)
                 
                 
-                sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAtIndexPath: result.matchedIndex)
+                sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAt: result.matchedIndex)
                 
-                sentInvitationsVC.performSegueWithIdentifier("SegueToDetailSentInvitationVC", sender: self)
+                sentInvitationsVC.performSegue(withIdentifier: "SegueToDetailSentInvitationVC", sender: self)
                 
                 
                 let title = "Check selected meeting time!"
@@ -393,10 +393,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Succeed to get the invitation meeting time. */
-    func succeedToGetTheInvitationMeetingTime(invitationID: NSInteger, jsonData: NSDictionary) -> Void {
+    func succeedToGetTheInvitationMeetingTime(_ invitationID: NSNumber, jsonData: NSDictionary) -> Void {
         
         /*Get information from response. */
-        let selectedMeetingTime: String = jsonData.valueForKey("SelectedMeetingTime") as! String
+        let selectedMeetingTime: String = jsonData.value(forKey: "SelectedMeetingTime") as! String
         
         NSLog("selectedMeetingTime ==> %@", selectedMeetingTime)
         
@@ -406,9 +406,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Process the http response from remote server after sending http request which asked for invitation meeting time according to invitation ID. */
-    func receivedInvitationMeetingTimeFromRemoteServer(invitationID: NSInteger, data: NSData, response: NSURLResponse) -> Void {
+    func receivedInvitationMeetingTimeFromRemoteServer(_ invitationID: NSNumber, data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response status code: %ld", statusCode);
         
         processHttpResponseAccordingToStatusCode(invitationID, statusCode: statusCode, data: data, processSuccessfulHttpResponse: succeedToGetTheInvitationMeetingTime, processFailureHttpResponse: failedToGetTheInvitationMeetingTime)
@@ -416,14 +416,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Process the received push notifications on notifying selected meeting time for inviter user. */
-    func notifySelectedTimeForInviterUser(invitationID: NSInteger, eventType: NSInteger) -> Void {
+    func notifySelectedTimeForInviterUser(_ invitationID: NSNumber, eventType: NSInteger) -> Void {
         
         NSLog("#########Received push notification 2 ==> Notify inviter user about selected time.")
         
         /* Send Http message to supported web server in order to get selected meeting time for the inviter user. */
-        let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetingtime.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetingtime.php")!  // the web link of the provider.
         // Compose request information.
-        let postString: NSString = "iInvitationID=\(invitationID)"
+        let postString: NSString = "iInvitationID=\(invitationID)" as NSString
     
         let request = createHttpPostRequest(url, postString: postString)
         
@@ -433,7 +433,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Failed to get the invitation meeting Location. */
-    func failedToGetTheInvitationMeetingLocation(invitationID: NSInteger, errorMsg: NSString) -> Void {
+    func failedToGetTheInvitationMeetingLocation(_ invitationID: NSNumber, errorMsg: NSString) -> Void {
       
         let title = "Failed To Get Invitation Information!"
         let message = errorMsg as String
@@ -442,7 +442,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     /* Update selected meeting location for the invitation in the corresponding row in sent invitations view controller. */
-    func updateMeetingLocationForTheInvitationInfo(invitation: Invitation, selectedMeetingLocation: String) -> Void {
+    func updateMeetingLocationForTheInvitationInfo(_ invitation: Invitation, selectedMeetingLocation: String) -> Void {
         
         invitation.haveSelectedMeetingLocationFlag = true
         
@@ -458,9 +458,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Pass meeting locaitoin to detail sent invitation and show the detail sent invitation to the user. */
-    func passMeetingLocationToDetailSentInvitationsTabbar(invitationID: NSInteger, selectedMeetingLocation: String) -> Void {
+    func passMeetingLocationToDetailSentInvitationsTabbar(_ invitationID: NSNumber, selectedMeetingLocation: String) -> Void {
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             
             let sentInvitationsVC: MUSentInvitationsTableViewController = self.getSentInvitationsTableVC()
@@ -469,11 +469,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if (result.matchResult)
             {
-                self.updateMeetingLocationForTheInvitationInfo(sentInvitationsVC.Invitations[result.matchedIndex.row], selectedMeetingLocation: selectedMeetingLocation)
+                self.updateMeetingLocationForTheInvitationInfo(sentInvitationsVC.Invitations[(result.matchedIndex as NSIndexPath).row], selectedMeetingLocation: selectedMeetingLocation)
                 
-                sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAtIndexPath: result.matchedIndex)
+                sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAt: result.matchedIndex)
                 
-                sentInvitationsVC.performSegueWithIdentifier("SegueToDetailSentInvitationVC", sender: self)
+                sentInvitationsVC.performSegue(withIdentifier: "SegueToDetailSentInvitationVC", sender: self)
                 
                 
                 let title = "Check selected meeting location!"
@@ -490,10 +490,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /*  Succeed to get the invitation meeting locagtion. */
-    func succeedToGetTheInvitationMeetingLocation(invitationID: NSInteger, jsonData: NSDictionary) -> Void {
+    func succeedToGetTheInvitationMeetingLocation(_ invitationID: NSNumber, jsonData: NSDictionary) -> Void {
     
         /*Get information from response. */
-        let selectedMeetingLocation: String = jsonData.valueForKey("SelectedMeetingLocation") as! String
+        let selectedMeetingLocation: String = jsonData.value(forKey: "SelectedMeetingLocation") as! String
         
         NSLog("selectedMeetingLocation ==> %@", selectedMeetingLocation);
 
@@ -503,9 +503,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /* Process the http response from remote server after sending http request which asked for invitation meeting location according to invitation ID. */
-    func receivedInvitationMeetingLocationFromRemoteServer(invitationID: NSInteger, data: NSData, response: NSURLResponse) -> Void {
+    func receivedInvitationMeetingLocationFromRemoteServer(_ invitationID: NSNumber, data: Data, response: URLResponse) -> Void {
         
-        let statusCode = (response as! NSHTTPURLResponse).statusCode
+        let statusCode = (response as! HTTPURLResponse).statusCode
         NSLog("Response code: %ld", statusCode);
         
         
@@ -515,14 +515,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /* Process the received push notifications on notifying selected meeting location for invited user. */
-    func notifySelectedLocationForInviterUser(invitationID: NSInteger, eventType: NSInteger) -> Void {
+    func notifySelectedLocationForInviterUser(_ invitationID: NSNumber, eventType: NSInteger) -> Void {
 
         NSLog("#########Received push notification 3 ==> Notify inviter user about selected location.")
         
         /* Send Http message to supported web server in order to get selected meeting location for the inviter user. */
-        let url: NSURL = NSURL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetinglocation.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetinglocation.php")!  // the web link of the provider.
         // Compose request information.
-        let postString: NSString = "iInvitationID=\(invitationID)"
+        let postString: NSString = "iInvitationID=\(invitationID)" as NSString
         
         let request = createHttpPostRequest(url, postString: postString)
         
@@ -536,7 +536,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /* Process the received push notifications on reminding the incoming meeting for inviter user. */
-    func notifyIncomingMeetingForInviterUser(invitationID: NSInteger, eventType: NSInteger) -> Void {
+    func notifyIncomingMeetingForInviterUser(_ invitationID: NSNumber, eventType: NSInteger) -> Void {
         
         NSLog("#########Received push notification 4 ==> Notify inviter user about meeting starting.")
         
@@ -545,7 +545,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVC: UINavigationController = self.tabBarController?.viewControllers![0] as! UINavigationController
         
         /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-        navigationVC.navigationBar.translucent = false
+        navigationVC.navigationBar.isTranslucent = false
         /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
         
         let sentInvitationsVC: MUSentInvitationsTableViewController = navigationVC.viewControllers[0] as! MUSentInvitationsTableViewController
@@ -555,15 +555,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         for section in 0..<sentInvitationsVC.tableView.numberOfSections {
             
-            for row in 0..<sentInvitationsVC.tableView.numberOfRowsInSection(section) {
+            for row in 0..<sentInvitationsVC.tableView.numberOfRows(inSection: section) {
                 
-                let indexPath = NSIndexPath(forRow: row, inSection: section)
+                let indexPath = IndexPath(row: row, section: section)
                 
-                if (sentInvitationsVC.Invitations[indexPath.row].InvitationId == invitationID)
+                if (sentInvitationsVC.Invitations[(indexPath as NSIndexPath).row].InvitationId == invitationID)
                 {
                     
-                    sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAtIndexPath: indexPath)
-                    sentInvitationsVC.performSegueWithIdentifier("SegueToDetailSentInvitationVC", sender: self)
+                    sentInvitationsVC.tableView(sentInvitationsVC.tableView, didSelectRowAt: indexPath)
+                    sentInvitationsVC.performSegue(withIdentifier: "SegueToDetailSentInvitationVC", sender: self)
                     
                 }
                 
@@ -575,22 +575,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /*Find the matched index in the received invitations table view controller. */
-    func findIndexInReceivedInvitationTablesByInvitaionId(invitationID: NSInteger, ReceivedInvitationsVC: MUReceivedInvitationsTableViewController) -> (matchResult: Bool, matchedIndex: NSIndexPath) {
+    func findIndexInReceivedInvitationTablesByInvitaionId(_ invitationID: NSNumber, ReceivedInvitationsVC: MUReceivedInvitationsTableViewController) -> (matchResult: Bool, matchedIndex: IndexPath) {
         
         
         var matchResult: Bool = false    /* The result of unMatched. */
-        var matchedIndex: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0) /*Initialization. */
+        var matchedIndex: IndexPath = IndexPath(row: 0, section: 0) /*Initialization. */
         
   
         /*Find the matched row according to invitation ID. */
         for section in 0..<ReceivedInvitationsVC.tableView.numberOfSections {
             
-            for row in 0..<ReceivedInvitationsVC.tableView.numberOfRowsInSection(section) {
+            for row in 0..<ReceivedInvitationsVC.tableView.numberOfRows(inSection: section) {
                 
-                let indexPath = NSIndexPath(forRow: row, inSection: section)
+                let indexPath = IndexPath(row: row, section: section)
                 
                 
-                if(ReceivedInvitationsVC.receivedInvitations[indexPath.row].InvitationId == invitationID)
+                if(ReceivedInvitationsVC.receivedInvitations[(indexPath as NSIndexPath).row].InvitationId == invitationID)
                 {
                     matchResult = true
                     matchedIndex = indexPath
@@ -612,7 +612,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVC: UINavigationController = self.tabBarController?.viewControllers![1] as! UINavigationController
         
         /***It is used to adjust first row of table viewcontroller under the navigation item. otherwise, the first row will moves up and hides under the nav-bar.****/
-        navigationVC.navigationBar.translucent = false
+        navigationVC.navigationBar.isTranslucent = false
         /***reference: https://github.com/samvermette/SVPullToRefresh/issues/181***/
         
         let ReceivedInvitationsVC: MUReceivedInvitationsTableViewController = navigationVC.viewControllers[0] as! MUReceivedInvitationsTableViewController
@@ -621,7 +621,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* Process the received push notifications on reminding the incoming meeting for invited user. */
-    func notifyIncomingMeetingForInvitedUser(invitationID: NSInteger, eventType: NSInteger) -> Void {
+    func notifyIncomingMeetingForInvitedUser(_ invitationID: NSNumber, eventType: NSInteger) -> Void {
         
         NSLog("#########Received push notification 5 ==> Notify invited user about meeting starting.")
         
@@ -632,9 +632,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (result.matchResult)
         {
-            ReceivedInvitationsVC.tableView(ReceivedInvitationsVC.tableView, didSelectRowAtIndexPath: result.matchedIndex)
+            ReceivedInvitationsVC.tableView(ReceivedInvitationsVC.tableView, didSelectRowAt: result.matchedIndex)
             
-            ReceivedInvitationsVC.performSegueWithIdentifier("SegueToDetailInvitationVC", sender: self)
+            ReceivedInvitationsVC.performSegue(withIdentifier: "SegueToDetailInvitationVC", sender: self)
         }
         
         
