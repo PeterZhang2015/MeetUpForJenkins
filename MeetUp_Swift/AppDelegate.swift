@@ -8,10 +8,11 @@
 
 import UIKit
 import FBSDKCoreKit
+import UserNotifications
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     var bIsLogin: Bool?    // Define the bIsLogin in order to judge whether the user has logged in. If the user has not logged in, it should show MUMainViewController to the user, otherwise, it should show TabBarController to the user.
@@ -23,9 +24,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = UserDefaults.standard   //Set defaults to save and get data.
     
 
+    func registerForPushNotifications(application: UIApplication) {
+
+        if #available(iOS 10.0, *){
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+                
+                // Enable or disable features based on authorization.
+                if granted == true
+                {
+                    print("Allow")
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                else
+                {
+                    print("Don't Allow")
+                }
+            }
+        }
+            
+        else{
+            //If user is not on iOS 10 use the old methods we've been using
+            let notifcationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
+            
+            let notificationSettings = UIUserNotificationSettings(types: notifcationTypes, categories: nil)
+            application.registerUserNotificationSettings(notificationSettings)
+            
+        }
+
+    }
+    
+    
     /*Handling when the application launched in didFinishLaunchingWithOptions function. */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        
+        registerForPushNotifications(application: application)
+        
         // Set lauched view.
        // self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
@@ -35,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if ((self.bIsLogin) != true){   // BOOL value to check if user is logged in or not.If user succefully logged in set value of this as true else false.
             
-            print("Register to APNS.")
+            print("Need to register to APNS.")
             
             loginMeetUpApplication(application)
 
@@ -69,6 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /* Fail to register APNS. */
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Couldn’t register to APNS: (error)")
+        
+        print("error reason is ", error.localizedDescription)
     }
     
     /* Receives push notification from APNS. */
@@ -278,7 +315,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("#########Received push notification 1 ==> Notify invited user about coming new invitation")
  
         /* Send Http message to supported web server in order to get the invitation information. */
-        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getinvitationinfo.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/getinvitationinfo.php")!  // the web link of the provider.
         
         // Compose request information.
         let postString: NSString = "iInvitationID=\(invitationID)" as NSString
@@ -421,7 +458,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("#########Received push notification 2 ==> Notify inviter user about selected time.")
         
         /* Send Http message to supported web server in order to get selected meeting time for the inviter user. */
-        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetingtime.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/getselectedmeetingtime.php")!  // the web link of the provider.
         // Compose request information.
         let postString: NSString = "iInvitationID=\(invitationID)" as NSString
     
@@ -520,7 +557,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("#########Received push notification 3 ==> Notify inviter user about selected location.")
         
         /* Send Http message to supported web server in order to get selected meeting location for the inviter user. */
-        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/getselectedmeetinglocation.php")!  // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/getselectedmeetinglocation.php")!  // the web link of the provider.
         // Compose request information.
         let postString: NSString = "iInvitationID=\(invitationID)" as NSString
         

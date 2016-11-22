@@ -228,7 +228,7 @@ class MUAnSentInvitationViewController: UIViewController ,UITextFieldDelegate, U
 
                 /* Send meeting invitation request to the provider through HTTP request message. */
                 
-                let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/sendinvitation.php")!  // the web link of the provider.
+                let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/sendinvitation.php")!  // the web link of the provider.
       
                 let postString = createAnInvitationPostString()
                 

@@ -1261,12 +1261,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "499239488.989451"
+                  timestampString = "500608999.437532"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
                   endingLineNumber = "386"
-                  offsetFromSymbolStart = "531">
+                  offsetFromSymbolStart = "424">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1276,12 +1276,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "499239488.991847"
+                  timestampString = "500608999.438895"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
                   endingLineNumber = "386"
-                  offsetFromSymbolStart = "2283">
+                  offsetFromSymbolStart = "1784">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1357,12 +1357,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "499239489.003224"
+                  timestampString = "500608999.448666"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "338"
                   endingLineNumber = "338"
-                  offsetFromSymbolStart = "430">
+                  offsetFromSymbolStart = "372">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1372,12 +1372,12 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "499239489.005037"
+                  timestampString = "500608999.45012"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "339"
                   endingLineNumber = "339"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1395,6 +1395,128 @@
             startingLineNumber = "248"
             endingLineNumber = "248"
             landmarkName = "loginButton(_:didCompleteWith:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MULoginViewController.swift"
+            timestampString = "500599916.577614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "loginApplication(_:userPassword:loginWithFacebook:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "500603374.599701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "500603374.599701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.AddressBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "*0x100096270">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeetUp_Swift.AppDelegate.application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool"
+                  moduleName = "MeetUp_Swift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/AppDelegate.swift"
+                  timestampString = "500601754.418351"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "624">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "500603374.599701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "500603374.599701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "500603593.300766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "application(_:didFailToRegisterForRemoteNotificationsWithError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

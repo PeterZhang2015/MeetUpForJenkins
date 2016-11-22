@@ -211,7 +211,7 @@ class MULoginViewController: UIViewController ,UITextFieldDelegate ,FBSDKLoginBu
         /* Send device token together with loginEmailand longinPassword to the provider through HTTP request message. */
         
         
-        let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/login.php")!   // the web link of the provider.
+        let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/login.php")!   // the web link of the provider.
 
         // Compose login information with device token, login Email, and loginPassword
         let postString: NSString = "devicetoken=\(deviceToken!)&sEmail=\(userEmail)&sPassword=\(userPassword)&iLoginWithFacebook=\(loginWithFacebook)" as NSString

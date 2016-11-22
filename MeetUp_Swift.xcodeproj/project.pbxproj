@@ -192,8 +192,8 @@
 				5E675FA81CCB295700386BD4 /* meetingIcon.png */,
 				5E675FA61CCB0B5300386BD4 /* meetupIcon.png */,
 				5E675FAA1CCB2A5B00386BD4 /* pinIcon.jpg */,
-				5E675FA41CCB084C00386BD4 /* test.jpg */,
 				5ECDFCBA1B8C1518001E3FC4 /* Images.xcassets */,
+				5E675FA41CCB084C00386BD4 /* test.jpg */,
 				5ECDFCBC1B8C1518001E3FC4 /* LaunchScreen.xib */,
 				5ECDFCAF1B8C1518001E3FC4 /* Supporting Files */,
 			);
@@ -280,6 +280,9 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -292,6 +295,7 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 5HNZY4FFEY;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 5ECDFCAB1B8C1518001E3FC4;
 					};
 				};
@@ -508,9 +512,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 崇正 张 (2AM6M57835)";
+				CODE_SIGN_ENTITLEMENTS = MeetUp_Swift/MeetUp_Swift.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5HNZY4FFEY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
@@ -531,9 +537,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 崇正 张 (2AM6M57835)";
+				CODE_SIGN_ENTITLEMENTS = MeetUp_Swift/MeetUp_Swift.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5HNZY4FFEY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MeetUp_Swift/FacebookSDKs-iOS-20150813",
@@ -556,6 +564,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5HNZY4FFEY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -581,6 +590,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5HNZY4FFEY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

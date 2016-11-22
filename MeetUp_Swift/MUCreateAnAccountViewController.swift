@@ -31,7 +31,7 @@ class MUCreateAnAccountViewController: UIViewController ,UITextFieldDelegate{
             //    let deviceToken = "1234"  //Just for debug.
             
             /* send sign up data to web server. */
-            let url: URL = URL(string: "http://192.168.0.3.xip.io/~chongzhengzhang/php/createaccount.php")!
+            let url: URL = URL(string: "http://192.168.0.103.xip.io/~chongzhengzhang/php/createaccount.php")!
             
             // Compose a query string
             let postString: NSString = "sDeviceToken=\(deviceToken!)&sUsername=\(SignUpUserName.text!)&sEmail=\(SignUpEmail.text!)&sPassword=\(SignUpPassword.text!)" as NSString
