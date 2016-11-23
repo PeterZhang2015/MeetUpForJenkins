@@ -1261,7 +1261,7 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "500608999.437532"
+                  timestampString = "501555227.630568"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
@@ -1276,7 +1276,7 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "500608999.438895"
+                  timestampString = "501555227.631809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
@@ -1357,7 +1357,7 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "500608999.448666"
+                  timestampString = "501555227.642174"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "338"
@@ -1372,7 +1372,7 @@
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "500608999.45012"
+                  timestampString = "501555227.643695"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "339"
@@ -1401,7 +1401,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MULoginViewController.swift"
@@ -1475,7 +1475,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/AppDelegate.swift"
@@ -1491,7 +1491,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/AppDelegate.swift"
@@ -1511,12 +1511,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/AppDelegate.swift"
-            timestampString = "500603593.300766"
+            timestampString = "501552406.953665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "application(_:didFailToRegisterForRemoteNotificationsWithError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/AppDelegate.swift"
+            timestampString = "501553445.692015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
