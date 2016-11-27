@@ -330,7 +330,8 @@ func showRouteFromCurrentLocationToDestinationLocation(_ mapView: MKMapView, cur
     request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: destinationLocationCoordinate.latitude, longitude: destinationLocationCoordinate.longitude), addressDictionary: nil))
     
     //request.requestsAlternateRoutes = true
-    request.requestsAlternateRoutes = false
+    request.requestsAlternateRoutes = true
+
     request.transportType = .automobile
     
     let directions = MKDirections(request: request)
@@ -341,6 +342,8 @@ func showRouteFromCurrentLocationToDestinationLocation(_ mapView: MKMapView, cur
         for route in unwrappedResponse.routes {
             
             addEstimatedTimeArrivalToRoute(mapView, route: route)
+            
+            
      
             mapView.add(route.polyline)
 

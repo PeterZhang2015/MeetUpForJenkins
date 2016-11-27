@@ -152,11 +152,18 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
 //        
 //    }
 
+    // returns a random color
+    func randomColor() -> UIColor{
+        let red = CGFloat(drand48())
+        let green = CGFloat(drand48())
+        let blue = CGFloat(drand48())
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = UIColor.blue
+        renderer.strokeColor = randomColor()
     
         renderer.alpha = 0.7;
         renderer.lineWidth = 4.0;
@@ -314,7 +321,9 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
 //     //   [self.map removeFromSuperview];
 //      //  [self.view addSubview:mapView];
 //    }
-//    
+//  
+    
+
 
     override func viewWillDisappear(_ animated: Bool) {
        
