@@ -68,12 +68,13 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allowing to get location can get better experience from the application.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allowing to get location can get better experience from the application.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allowing to get location can get better experience from the application.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

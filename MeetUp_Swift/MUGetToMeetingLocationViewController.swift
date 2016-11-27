@@ -45,8 +45,15 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
         // For use in foreground
         locationManager.requestWhenInUseAuthorization()
         
+        NSLog("@@@@@@@@@@@@@@@locationServicesEnabled = %d @@@@@@@@@@@@@@")
+        
+        let temp = CLLocationManager.locationServicesEnabled()
+        print("locationServicesEnabled:%d", temp)
+        
         if (CLLocationManager.locationServicesEnabled())
         {
+            NSLog("@@@@@@@@@@@@@@@locationServicesEnabled@@@@@@@@@@@@@@")
+            
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             locationManager.startUpdatingLocation()
@@ -69,19 +76,55 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
         /*Show meeting location address in the map view. */
         let destinationTitle = "Meeting Location"
         
+        locationManager.startUpdatingLocation()
+        
+        NSLog("@@@@@@@@@@@@@@@viewDidLoad@@@@@@@@@@@@@@")
+        
         showRoutesToDestinationLocationAddressInTheMapView(self.MapView, currentUserCoordinate:self.currentUserAddressCoordinate, destinationLocationAddress: self.selectedMeetingLocationAddress!, destinationTitle: destinationTitle)
         
 //        if (showAddressResult.findCoordinateFlag)
 //        {
 //            showRouteFromCurrentLocationToDestinationLocation(self.MapView, currentUserAddressCoordinate: self.currentUserAddressCoordinate, destinationLocationCoordinate: showAddressResult.destinationCoordinate)
 //        }
+        
+        NSLog("@@@@@@@@@@@@@@@End of viewDidLoad@@@@@@@@@@@@@@")
  
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation: CLLocation = locations[0]
+        let latitude = userLocation.coordinate.latitude
+        let longitude = userLocation.coordinate.longitude
+        
+        let latDelta: CLLocationDegrees = 0.05
+        let longDelta: CLLocationDegrees = 0.05
+        
+        let span = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        let location = CLLocationCoordinate2DMake(latitude, longitude)
+        let region = MKCoordinateRegionMake(location, span)
+        
+        self.MapView.setRegion(region, animated: true)
+        
+        currentUserAddressCoordinate = location
+        
+        NSLog("@@@@@@@@@@@@@@@didUpdateToLocations@@@@@@@@@@@@@@")
+        NSLog("didUpdateToLocations-location.latitude:%d", location.latitude)
+        NSLog("didUpdateToLocations-location.longitude:%d", location.longitude)
+
+        NSLog("didUpdateToLocations-currentUserAddressCoordinate.latitude:%d", currentUserAddressCoordinate.latitude)
+        NSLog("didUpdateToLocations-currentUserAddressCoordinate.longitude:%d", currentUserAddressCoordinate.longitude)
+        
+        let destinationTitle = "Meeting Location"
+        showRoutesToDestinationLocationAddressInTheMapView(self.MapView, currentUserCoordinate:self.currentUserAddressCoordinate, destinationLocationAddress: self.selectedMeetingLocationAddress!, destinationTitle: destinationTitle)
+
+        
+        self.locationManager.stopUpdatingLocation() 
+    }
+
     
-    
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+//    private func locationManager(_ manager: CLLocationManager, didUpdateLocations newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
 //        
 //        currentUserAddressCoordinate = newLocation.coordinate
 //        
@@ -263,9 +306,25 @@ class MUGetToMeetingLocationViewController: UIViewController, CLLocationManagerD
     }
     
     
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        
+//        self.MapView.removeFromSuperview()
+//        self.view.addSubview(MapView)
+//        
+//     //   [self.map removeFromSuperview];
+//      //  [self.view addSubview:mapView];
+//    }
+//    
 
+    override func viewWillDisappear(_ animated: Bool) {
+       
+        self.MapView.delegate = nil;
+        self.MapView.removeFromSuperview()
+        self.MapView = nil;
+        
+        super.viewWillDisappear(animated)
+    }
     
-
     /*
     // MARK: - Navigation
 

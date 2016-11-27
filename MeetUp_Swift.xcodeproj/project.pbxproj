@@ -11,6 +11,7 @@
 		5E05AB021C9F6C180001E5A7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AAFF1C9F6C180001E5A7 /* FBSDKLoginKit.framework */; };
 		5E05AB031C9F6C180001E5A7 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AB001C9F6C180001E5A7 /* FBSDKShareKit.framework */; };
 		5E05AB071C9F93870001E5A7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05AB061C9F93870001E5A7 /* Bolts.framework */; };
+		5E17EE7C1DEA7D650054B361 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E17EE7B1DEA7D650054B361 /* CoreLocation.framework */; };
 		5E2C67911CE41EA700B9B996 /* MUConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2C67901CE41EA700B9B996 /* MUConstant.swift */; };
 		5E675FA51CCB084C00386BD4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FA41CCB084C00386BD4 /* test.jpg */; };
 		5E675FA71CCB0B5300386BD4 /* meetupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E675FA61CCB0B5300386BD4 /* meetupIcon.png */; };
@@ -64,6 +65,7 @@
 		5E05AB001C9F6C180001E5A7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		5E05AB051C9F913C0001E5A7 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		5E05AB061C9F93870001E5A7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		5E17EE7B1DEA7D650054B361 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5E2C67901CE41EA700B9B996 /* MUConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MUConstant.swift; sourceTree = "<group>"; };
 		5E675FA41CCB084C00386BD4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test.jpg; path = ../test.jpg; sourceTree = "<group>"; };
 		5E675FA61CCB0B5300386BD4 /* meetupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetupIcon.png; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E17EE7C1DEA7D650054B361 /* CoreLocation.framework in Frameworks */,
 				5E05AB021C9F6C180001E5A7 /* FBSDKLoginKit.framework in Frameworks */,
 				5E05AB011C9F6C180001E5A7 /* FBSDKCoreKit.framework in Frameworks */,
 				5E05AB031C9F6C180001E5A7 /* FBSDKShareKit.framework in Frameworks */,
@@ -138,6 +141,14 @@
 			name = FacebookSDK;
 			sourceTree = "<group>";
 		};
+		5E17EE7A1DEA7D650054B361 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E17EE7B1DEA7D650054B361 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5ECDFCA31B8C1518001E3FC4 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +156,7 @@
 				5ECDFCAE1B8C1518001E3FC4 /* MeetUp_Swift */,
 				5ECDFCC61B8C1518001E3FC4 /* MeetUp_SwiftTests */,
 				5ECDFCAD1B8C1518001E3FC4 /* Products */,
+				5E17EE7A1DEA7D650054B361 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,8 +193,8 @@
 				5E928B171B971B06008DF2C3 /* MUAddMeetingLocationsTableViewController.swift */,
 				5E928B191B971B38008DF2C3 /* MUAddAMeetingLocationViewController.swift */,
 				5E928B211B986636008DF2C3 /* MUInviteAnFriendViewController.swift */,
-				5ECDFCDB1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift */,
 				5EFDE9951C2508D2000928D3 /* MUDetailReceivedInvitationViewController.swift */,
+				5ECDFCDB1B8C2E80001E3FC4 /* MUReceivedInvitationsTableViewController.swift */,
 				5ECDFCDD1B8C2E97001E3FC4 /* MUSettingsTableViewController.swift */,
 				5EAC34511BCFBF8000D83AA5 /* MUSettingsChangePasswordViewController.swift */,
 				5ED3124B1B907B16001C776C /* MUInvitationInformation.swift */,

@@ -1017,7 +1017,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1037,11 +1037,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487398233.058887"
+            timestampString = "501905390.009591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "MUGetToMeetingLocationViewController"
             landmarkType = "3">
             <Locations>
@@ -1081,15 +1081,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469204.383003"
+            timestampString = "501906981.575237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "mapView(_:rendererFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1101,11 +1101,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469204.383003"
+            timestampString = "501906981.575237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1117,11 +1117,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469204.383003"
+            timestampString = "501906981.575237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
             <Locations>
@@ -1161,15 +1161,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469204.383003"
+            timestampString = "501906981.575237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "mapView(_:rendererFor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1177,15 +1177,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469183.500838"
+            timestampString = "501906981.575237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "MUGetToMeetingLocationViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -1197,11 +1197,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469188.965376"
+            timestampString = "501905390.009591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1213,11 +1213,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487469192.284405"
+            timestampString = "501906136.110706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1225,7 +1225,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1241,7 +1241,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1254,14 +1254,14 @@
             landmarkType = "9">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MeetUp_Swift.(showRoutesToDestinationLocationAddressInTheMapView (__ObjC.MKMapView, currentUserCoordinate : __C.CLLocationCoordinate2D, destinationLocationAddress : Swift.String, destinationTitle : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "501555227.630568"
+                  timestampString = "501560666.594482"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
@@ -1269,14 +1269,14 @@
                   offsetFromSymbolStart = "424">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MeetUp_Swift.(showRoutesToDestinationLocationAddressInTheMapView (__ObjC.MKMapView, currentUserCoordinate : __C.CLLocationCoordinate2D, destinationLocationAddress : Swift.String, destinationTitle : Swift.String) -&gt; ()).(closure #1)"
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "501555227.631809"
+                  timestampString = "501560666.595954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "386"
@@ -1289,7 +1289,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1305,7 +1305,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1325,19 +1325,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
-            timestampString = "487511921.400699"
+            timestampString = "501906136.110706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MeetUp_Swift/MUGlobalFunction.swift"
@@ -1350,14 +1358,14 @@
             landmarkType = "9">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MeetUp_Swift.showRouteFromCurrentLocationToDestinationLocation (__ObjC.MKMapView, currentUserAddressCoordinate : __C.CLLocationCoordinate2D, destinationLocationCoordinate : __C.CLLocationCoordinate2D) -&gt; ()"
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "501555227.642174"
+                  timestampString = "501903697.864726"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "338"
@@ -1365,14 +1373,14 @@
                   offsetFromSymbolStart = "372">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "MeetUp_Swift.(showRouteFromCurrentLocationToDestinationLocation (__ObjC.MKMapView, currentUserAddressCoordinate : __C.CLLocationCoordinate2D, destinationLocationCoordinate : __C.CLLocationCoordinate2D) -&gt; ()).(closure #1)"
                   moduleName = "MeetUp_Swift"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chongzhengzhang/Desktop/MeetUpForJenkins/MeetUp_Swift/MUGlobalFunction.swift"
-                  timestampString = "501555227.643695"
+                  timestampString = "501903697.866304"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "339"
@@ -1533,6 +1541,134 @@
             startingLineNumber = "69"
             endingLineNumber = "69"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MULoginViewController.swift"
+            timestampString = "501558853.368416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "loginApplication(_:userPassword:loginWithFacebook:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGlobalFunction.swift"
+            timestampString = "501560666.525904"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "showRoutesToDestinationLocationAddressInTheMapView(_:currentUserCoordinate:destinationLocationAddress:destinationTitle:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGlobalFunction.swift"
+            timestampString = "501560823.105541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "showRoutesToDestinationLocationAddressInTheMapView(_:currentUserCoordinate:destinationLocationAddress:destinationTitle:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGlobalFunction.swift"
+            timestampString = "501560824.742992"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "showRoutesToDestinationLocationAddressInTheMapView(_:currentUserCoordinate:destinationLocationAddress:destinationTitle:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
+            timestampString = "501906981.575237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
+            timestampString = "501906252.593321"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
+            timestampString = "501906252.593321"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MeetUp_Swift/MUGetToMeetingLocationViewController.swift"
+            timestampString = "501905390.009591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "setLocationManagerParameters(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
